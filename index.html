@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cẩm Cù House Coffee & Food | Bình yên bên bờ suối</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================= 3. MÀU SẮC (Color Palette) ================= */
+        :root {
+            --primary: #1B3022;    /* Xanh rừng sâu - Sang trọng, thiên nhiên */
+            --secondary: #F4F1EA;  /* Trắng cát ấm - Tối giản */
+            --accent: #C5A880;     /* Vàng Champagne - Điểm nhấn cao cấp */
+            --text: #1A1A1A;       /* Đen than - Dễ đọc */
+            --white: #ffffff;
+            --transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        /* ================= RESET & CƠ BẢN ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* ================= 1. LAYOUT: HEADER ================= */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        header.scrolled {
+            padding: 15px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--white);
+        }
+        header.scrolled .logo { color: var(--primary); }
+
+        .nav-menu { display: flex; gap: 40px; }
+        .nav-menu a {
+            color: var(--white);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        header.scrolled .nav-menu a { color: var(--text); }
+        .nav-menu a:hover { color: var(--accent) !important; }
+
+        /* ================= 2. HERO SECTION ================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* 📸 THAY ĐỔI ẢNH BANNER CHÍNH TẠI ĐÂY */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transform: scale(1.1);
+            animation: zoomOut 10s infinite alternate;
+        }
+        .hero-content h1 { font-size: 4.5rem; margin-bottom: 20px; opacity: 0; transform: translateY(30px); }
+        .hero-content p { font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0; }
+        
+        /* 7. HIỆU ỨNG: Animation khi tải trang */
+        .loaded .hero-content h1 { opacity: 1; transform: translateY(0); transition: 1.2s 0.3s; }
+        .loaded .hero-content p { opacity: 1; transition: 1.2s 0.6s; }
+
+        /* ================= 5. UI: COMPONENTS (Cards & Grid) ================= */
+        section { padding: 120px 10%; }
+        .section-title { text-align: center; margin-bottom: 80px; }
+        .section-title h2 { font-size: 3rem; color: var(--primary); }
+        .section-title span { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 5px; color: var(--accent); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+        .about-img {
+            position: relative;
+            height: 600px;
+            /* 📸 THAY ĐỔI ẢNH GIỚI THIỆU TẠI ĐÂY */
+            background: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1000&auto=format&fit=crop') center/cover;
+            border-radius: 2px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .gallery-item {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        /* ================= 1. LAYOUT: FOOTER ================= */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 100px 10% 50px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        .footer-logo { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent); }
+        .info-item { margin-bottom: 15px; font-size: 0.9rem; display: flex; gap: 10px; }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            opacity: 0.6;
+        }
+
+        /* ================= 6. RESPONSIVE ================= */
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; gap: 50px; }
+            .hero-content h1 { font-size: 3rem; }
+            .gallery { grid-template-columns: 1fr 1fr; }
+            .nav-menu { display: none; } /* Đơn giản hóa cho bản demo chuyên nghiệp */
+        }
+
+        @keyframes zoomOut { from { transform: scale(1.1); } to { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logo">CẨM CÙ</div>
+        <ul class="nav-menu">
+            <li><a href="#about">Câu chuyện</a></li>
+            <li><a href="#gallery">Không gian</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <p>Cẩm Cù House Coffee & Food</p>
+                <h1>Bình Yên Bên Bờ Suối</h1>
+                <a href="#about" style="color:white; border-bottom: 1px solid var(--accent); padding-bottom: 5px; font-size: 0.8rem; letter-spacing: 2px;">KHÁM PHÁ NGAY</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="about-grid">
+                <div class="about-img"></div>
+                <div class="about-text">
+                    <div class="section-title" style="text-align: left;">
+                        <span>Về chúng tôi</span>
+                        <h2>Trải nghiệm sinh thái thuần khiết</h2>
+                    </div>
+                    <p>Tọa lạc tại Hẻm 437 Hùng Vương, Gia Nghĩa, Cẩm Cù House không chỉ là một quán cà phê. Đó là nơi bạn tìm lại bản thân giữa tiếng suối róc rách và hương cà phê xanh sạch.</p>
+                    <p style="margin-top: 20px;">Chúng tôi kiến tạo một không gian mở, nơi thiên nhiên và kiến trúc hòa làm một, mang đến bầu không khí trong lành tuyệt đối cho thực khách.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" style="background-color: var(--white);">
+            <div class="section-title">
+                <span>Bộ sưu tập</span>
+                <h2>Hòa mình cùng thiên nhiên</h2>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?q=80&w=800" alt="Cafe"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800" alt="Nature"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800" alt="Coffee"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800" alt="Space"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=800" alt="Food"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800" alt="Landscape"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">CẨM CÙ</div>
+                <p style="opacity: 0.7; max-width: 400px;">Kiến tạo không gian kết nối con người và thiên nhiên thông qua văn hóa thưởng thức cà phê xanh sạch tại Đăk Nông.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 20px; font-family: 'Montserrat'; font-size: 1rem; letter-spacing: 2px;">LIÊN HỆ</h3>
+                <div class="info-item">📍 Hẻm 437 Hùng Vương, Nghĩa Trung, Gia Nghĩa</div>
+                <div class="info-item">☎️ 0382 851 688 | 0774 659 000</div>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 20px; font-family: 'Montserrat'; font-size: 1rem; letter-spacing: 2px;">GIỜ MỞ CỬA</h3>
+                <div class="info-item">Thứ 2 - Thứ 5: 07h00 - 18h00</div>
+                <div class="info-item" style="color: var(--accent);">T6 - Chủ Nhật: 07h00 - 22h00</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 CẨM CÙ HOUSE COFFEE & FOOD. THIẾT KẾ BỞI CHUYÊN GIA.
+        </div>
+    </footer>
+
+    <script>
+        // Hiệu ứng tải trang
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // 7. HIỆU ỨNG: Header khi cuộn trang
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scroll cho các menu điều hướng
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
