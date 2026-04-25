@@ -32,7 +32,7 @@
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
 
-        /* ================= HIỆU ỨNG CAO CẤP ================= */
+        /* ================= HIỆU ỨNG ================= */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -105,7 +105,6 @@
 
         /* ================= CÁC SECTION CHUNG ================= */
         section { padding: 150px 4%; position: relative; max-width: 1920px; margin: 0 auto; }
-        
         .section-title { text-align: center; margin-bottom: 90px; }
         .section-title h2 { font-size: 3.5rem; line-height: 1.2; margin-top: 15px; }
         .section-title span { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 6px; color: var(--accent); }
@@ -116,7 +115,6 @@
         .about-img-wrapper { position: relative; padding-bottom: 30px; padding-right: 30px; }
         .about-img-wrapper::after { content: ''; position: absolute; top: 30px; left: 30px; right: 0; bottom: 0; border: 1px solid var(--accent); z-index: -1; }
         .about-img { height: 750px; background-size: cover; background-position: center; z-index: 1; }
-        
         .about-text p { font-size: 1.1rem; margin-bottom: 25px; color: #555; }
         .btn-luxury {
             display: inline-block; padding: 15px 40px; margin-top: 20px;
@@ -135,7 +133,6 @@
         .journey-img-1, .journey-img-2 { position: relative; overflow: hidden; border-radius: 4px; }
         .journey-img-1 { height: 650px; width: 55%; }
         .journey-img-2 { height: 550px; width: 45%; margin-top: 80px; }
-        
         .journey-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .journey-slide.active { opacity: 1; z-index: 2; }
 
@@ -166,7 +163,6 @@
         .gallery-section { background-color: var(--white); }
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
         .gallery-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; }
-        
         .gallery-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; opacity: 0; transition: all 1.5s ease-in-out; 
@@ -183,7 +179,7 @@
         .info-item { margin-bottom: 20px; font-size: 0.9rem; opacity: 0.8; }
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* ================= RESPONSIVE DI ĐỘNG ================= */
+        /* ================= RESPONSIVE DI ĐỘNG (MENU DROPDOWN THEO FIGMA) ================= */
         @media (max-width: 1024px) {
             section { padding: 100px 5%; }
             .about-grid, .journey-grid { grid-template-columns: 1fr; gap: 60px; }
@@ -200,18 +196,17 @@
             
             .menu-toggle { display: block; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); }
             
-            /* 📸 CẤU TRÚC MENU DROPDOWN CHỮ NHẬT DỌC NHƯ FIGMA */
+            /* CẤU TRÚC MENU NHỎ XUỐNG GÓC PHẢI NHƯ BẢN THIẾT KẾ FIGMA */
             .nav-menu {
-                position: absolute; top: calc(100% + 10px); right: 5%; left: auto;
-                width: 180px; /* Ép cứng chiều rộng để tạo hình chữ nhật dọc */
-                height: auto;
+                position: absolute; top: 100%; right: 5%; left: auto;
+                width: max-content; min-width: 180px; height: auto;
                 background: var(--secondary); 
                 flex-direction: column; justify-content: flex-start; align-items: flex-end; /* Căn phải nội dung */
-                padding: 30px 25px; gap: 30px; 
+                padding: 25px 30px; gap: 25px; 
                 box-shadow: 0 15px 30px rgba(0,0,0,0.15);
                 border-radius: 4px;
                 
-                /* Hiệu ứng trượt nhẹ */
+                /* Đổi kiểu xuất hiện: Mờ và trượt nhẹ từ trên xuống */
                 opacity: 0; visibility: hidden; transform: translateY(-10px);
                 transition: all 0.4s ease; z-index: 1001;
             }
@@ -251,6 +246,9 @@
             
             .gallery { grid-template-columns: 1fr; gap: 2px; } 
             footer { padding: 80px 5% 40px; }
+            
+            /* Điều chỉnh nhẹ góc menu thả xuống cho màn hình điện thoại */
+            .nav-menu { right: 5%; left: 5%; width: auto; padding: 20px; }
         }
     </style>
 </head>
@@ -271,71 +269,71 @@
     <main>
         <section class="hero">
             <div class="hero-slideshow-container" id="heroSlideshow">
-                <div class="slide active" style="background-image: url('cafe-suối-1.jpg');"></div>
-                <div class="slide" style="background-image: url('không-gian-sinh-thái-2.jpg');"></div>
-                <div class="slide" style="background-image: url('ly-cafe-nguyên-chất-3.jpg');"></div>
-                <div class="slide" style="background-image: url('view-quan-ben-suoi-4.jpg');"></div>
-                <div class="slide" style="background-image: url('khong-gian-thoang-dang-5.jpg');"></div>
-                <div class="slide" style="background-image: url('cafe-moc-dak-nong-6.jpg');"></div>
-                <div class="slide" style="background-image: url('tra-trai-cay-ven-suoi-7.jpg');"></div>
-                <div class="slide" style="background-image: url('diem-tam-sang-signature-8.jpg');"></div>
-                <div class="slide" style="background-image: url('goc-chill-cua-quan-9.jpg');"></div>
-                <div class="slide" style="background-image: url('cay-co-hoa-la-10.jpg');"></div>
-                <div class="slide" style="background-image: url('khach-checkin-view-suoi-11.jpg');"></div>
-                <div class="slide" style="background-image: url('ly-cafe-sua-da-12.jpg');"></div>
-                <div class="slide" style="background-image: url('cafe-den-nong-13.jpg');"></div>
-                <div class="slide" style="background-image: url('tra-dao-cam-sa-14.jpg');"></div>
-                <div class="slide" style="background-image: url('banh-mi-op-la-15.jpg');"></div>
-                <div class="slide" style="background-image: url('khong-gian-trong-nha-16.jpg');"></div>
-                <div class="slide" style="background-image: url('khong-gian-ngoai-troi-17.jpg');"></div>
-                <div class="slide" style="background-image: url('view-quan-buoi-toi-18.jpg');"></div>
-                <div class="slide" style="background-image: url('den-long-trang-tri-19.jpg');"></div>
-                <div class="slide" style="background-image: url('nhan-vien-phuc-vu-20.jpg');"></div>
-                <div class="slide" style="background-image: url('quay-pha-che-21.jpg');"></div>
-                <div class="slide" style="background-image: url('ban-ghe-go-muc-mac-22.jpg');"></div>
-                <div class="slide" style="background-image: url('chau-cay-canh-decor-23.jpg');"></div>
-                <div class="slide" style="background-image: url('tranh-tuong-nghe-thuat-24.jpg');"></div>
-                <div class="slide" style="background-image: url('khong-gian-yen-tinh-25.jpg');"></div>
-                <div class="slide" style="background-image: url('view-nhin-ra-suoi-26.jpg');"></div>
-                <div class="slide" style="background-image: url('hat-cafe-nhan-xanh-27.jpg');"></div>
-                <div class="slide" style="background-image: url('quy-trinh-rang-xay-28.jpg');"></div>
-                <div class="slide" style="background-image: url('tach-cafe-thom-lung-29.jpg');"></div>
-                <div class="slide" style="background-image: url('cafe-nguyen-chat-dak-nong-30.jpg');"></div>
-                <div class="slide" style="background-image: url('ly-cafe-nong-31.jpg');"></div>
-                <div class="slide" style="background-image: url('cafe-sua-nong-32.jpg');"></div>
-                <div class="slide" style="background-image: url('tra-sua-tran-chau-33.jpg');"></div>
-                <div class="slide" style="background-image: url('nuoc-ep-trai-cay-34.jpg');"></div>
-                <div class="slide" style="background-image: url('sinh-to-trai-cay-35.jpg');"></div>
-                <div class="slide" style="background-image: url('mon-an-sang-36.jpg');"></div>
-                <div class="slide" style="background-image: url('banh-ngot-trang-tri-37.jpg');"></div>
-                <div class="slide" style="background-image: url('khong-gian-quan-buoi-sang-38.jpg');"></div>
-                <div class="slide" style="background-image: url('khong-gian-quan-buoi-trua-39.jpg');"></div>
-                <div class="slide" style="background-image: url('khong-gian-quan-buoi-chieu-40.jpg');"></div>
-                <div class="slide" style="background-image: url('goc-ngoi-chill-41.jpg');"></div>
-                <div class="slide" style="background-image: url('view-quan-tu-tren-cao-42.jpg');"></div>
-                <div class="slide" style="background-image: url('cong-vao-quan-43.jpg');"></div>
-                <div class="slide" style="background-image: url('bien-hieu-quan-44.jpg');"></div>
-                <div class="slide" style="background-image: url('khu-vuc-gui-xe-45.jpg');"></div>
-                <div class="slide" style="background-image: url('khong-gian-quan-trong-cay-xanh-46.jpg');"></div>
-                <div class="slide" style="background-image: url('hoa-la-decor-quan-47.jpg');"></div>
-                <div class="slide" style="background-image: url('view-quan-dem-trang-ngau-48.jpg');"></div>
-                <div class="slide" style="background-image: url('view-quan-dem-khong-trang-49.jpg');"></div>
-                <div class="slide" style="background-image: url('den-led-trang-tri-50.jpg');"></div>
-                <div class="slide" style="background-image: url('den-trum-trang-tri-51.jpg');"></div>
-                <div class="slide" style="background-image: url('khach-den-quan-thu-gian-52.jpg');"></div>
-                <div class="slide" style="background-image: url('khach-den-quan-lam-viec-53.jpg');"></div>
-                <div class="slide" style="background-image: url('khach-den-quan-doc-sach-54.jpg');"></div>
-                <div class="slide" style="background-image: url('khach-den-quan-hen-ho-55.jpg');"></div>
-                <div class="slide" style="background-image: url('khach-den-quan-chup-anh-56.jpg');"></div>
-                <div class="slide" style="background-image: url('khach-checkin-57.jpg');"></div>
-                <div class="slide" style="background-image: url('nhan-vien-quan-than-thien-58.jpg');"></div>
-                <div class="slide" style="background-image: url('quay-thu-ngan-59.jpg');"></div>
-                <div class="slide" style="background-image: url('menu-quan-60.jpg');"></div>
-                <div class="slide" style="background-image: url('bang-gia-do-uong-61.jpg');"></div>
-                <div class="slide" style="background-image: url('tach-cafe-nguyen-chat-62.jpg');"></div>
-                <div class="slide" style="background-image: url('ly-tra-thom-63.jpg');"></div>
-                <div class="slide" style="background-image: url('mon-an-signature-64.jpg');"></div>
-                <div class="slide" style="background-image: url('ly-cafe-nguyên-chất-65.jpg');"></div>
+                <div class="slide active" style="background-image: url('h1.jpg');"></div>
+                <div class="slide" style="background-image: url('h2.jpg');"></div>
+                <div class="slide" style="background-image: url('h3.jpg');"></div>
+                <div class="slide" style="background-image: url('h4.jpg');"></div>
+                <div class="slide" style="background-image: url('h5.jpg');"></div>
+                <div class="slide" style="background-image: url('h6.jpg');"></div>
+                <div class="slide" style="background-image: url('h7.jpg');"></div>
+                <div class="slide" style="background-image: url('h8.jpg');"></div>
+                <div class="slide" style="background-image: url('h9.jpg');"></div>
+                <div class="slide" style="background-image: url('h10.jpg');"></div>
+                <div class="slide" style="background-image: url('h11.jpg');"></div>
+                <div class="slide" style="background-image: url('h12.jpg');"></div>
+                <div class="slide" style="background-image: url('h13.jpg');"></div>
+                <div class="slide" style="background-image: url('h14.jpg');"></div>
+                <div class="slide" style="background-image: url('h15.jpg');"></div>
+                <div class="slide" style="background-image: url('h16.jpg');"></div>
+                <div class="slide" style="background-image: url('h17.jpg');"></div>
+                <div class="slide" style="background-image: url('h18.jpg');"></div>
+                <div class="slide" style="background-image: url('h19.jpg');"></div>
+                <div class="slide" style="background-image: url('h20.jpg');"></div>
+                <div class="slide" style="background-image: url('h21.jpg');"></div>
+                <div class="slide" style="background-image: url('h22.jpg');"></div>
+                <div class="slide" style="background-image: url('h23.jpg');"></div>
+                <div class="slide" style="background-image: url('h24.jpg');"></div>
+                <div class="slide" style="background-image: url('h25.jpg');"></div>
+                <div class="slide" style="background-image: url('h26.jpg');"></div>
+                <div class="slide" style="background-image: url('h27.jpg');"></div>
+                <div class="slide" style="background-image: url('h28.jpg');"></div>
+                <div class="slide" style="background-image: url('h29.jpg');"></div>
+                <div class="slide" style="background-image: url('h30.jpg');"></div>
+                <div class="slide" style="background-image: url('h31.jpg');"></div>
+                <div class="slide" style="background-image: url('h32.jpg');"></div>
+                <div class="slide" style="background-image: url('h33.jpg');"></div>
+                <div class="slide" style="background-image: url('h34.jpg');"></div>
+                <div class="slide" style="background-image: url('h35.jpg');"></div>
+                <div class="slide" style="background-image: url('h36.jpg');"></div>
+                <div class="slide" style="background-image: url('h37.jpg');"></div>
+                <div class="slide" style="background-image: url('h38.jpg');"></div>
+                <div class="slide" style="background-image: url('h39.jpg');"></div>
+                <div class="slide" style="background-image: url('h40.jpg');"></div>
+                <div class="slide" style="background-image: url('h41.jpg');"></div>
+                <div class="slide" style="background-image: url('h42.jpg');"></div>
+                <div class="slide" style="background-image: url('h43.jpg');"></div>
+                <div class="slide" style="background-image: url('h44.jpg');"></div>
+                <div class="slide" style="background-image: url('h45.jpg');"></div>
+                <div class="slide" style="background-image: url('h46.jpg');"></div>
+                <div class="slide" style="background-image: url('h47.jpg');"></div>
+                <div class="slide" style="background-image: url('h48.jpg');"></div>
+                <div class="slide" style="background-image: url('h49.jpg');"></div>
+                <div class="slide" style="background-image: url('h50.jpg');"></div>
+                <div class="slide" style="background-image: url('h51.jpg');"></div>
+                <div class="slide" style="background-image: url('h52.jpg');"></div>
+                <div class="slide" style="background-image: url('h53.jpg');"></div>
+                <div class="slide" style="background-image: url('h54.jpg');"></div>
+                <div class="slide" style="background-image: url('h55.jpg');"></div>
+                <div class="slide" style="background-image: url('h56.jpg');"></div>
+                <div class="slide" style="background-image: url('h57.jpg');"></div>
+                <div class="slide" style="background-image: url('h58.jpg');"></div>
+                <div class="slide" style="background-image: url('h59.jpg');"></div>
+                <div class="slide" style="background-image: url('h60.jpg');"></div>
+                <div class="slide" style="background-image: url('h61.jpg');"></div>
+                <div class="slide" style="background-image: url('h62.jpg');"></div>
+                <div class="slide" style="background-image: url('h63.jpg');"></div>
+                <div class="slide" style="background-image: url('h64.jpg');"></div>
+                <div class="slide" style="background-image: url('h65.jpg');"></div>
             </div>
             
             <div class="hero-overlay"></div>
@@ -352,7 +350,7 @@
         <section id="about">
             <div class="about-grid">
                 <div class="about-img-wrapper reveal">
-                    <div class="about-img" style="background-image: url('không-gian-quan-sinh-thai.jpg');"></div>
+                    <div class="about-img" style="background-image: url('kg.jpg');"></div>
                 </div>
                 <div class="about-text reveal">
                     <div class="section-title" style="text-align: left; margin-bottom: 40px;">
@@ -378,21 +376,21 @@
                 </div>
                 <div class="journey-img-container reveal">
                     <div class="journey-img-1" id="journeySlider1">
-                        <img src="hanh-trinh-hat-cafe-1.jpg" class="journey-slide active">
-                        <img src="trong-cafe-sach-2.jpg" class="journey-slide">
-                        <img src="cham-soc-cay-cafe-3.jpg" class="journey-slide">
-                        <img src="cafe-ra-hoa-4.jpg" class="journey-slide">
-                        <img src="qua-cafe-xanh-5.jpg" class="journey-slide">
-                        <img src="qua-cafe-chin-do-6.jpg" class="journey-slide">
-                        <img src="thu-hoach-hat-cafe-7.jpg" class="journey-slide">
+                        <img src="t1.jpg" class="journey-slide active">
+                        <img src="t2.jpg" class="journey-slide">
+                        <img src="t3.jpg" class="journey-slide">
+                        <img src="t4.jpg" class="journey-slide">
+                        <img src="t5.jpg" class="journey-slide">
+                        <img src="t6.jpg" class="journey-slide">
+                        <img src="t7.jpg" class="journey-slide">
                     </div>
                     <div class="journey-img-2" id="journeySlider2">
-                        <img src="phoi-hat-cafe-8.jpg" class="journey-slide active">
-                        <img src="rang-say-hat-cafe-9.jpg" class="journey-slide">
-                        <img src="xay-hat-cafe-10.jpg" class="journey-slide">
-                        <img src="dong-goi-cafe-11.jpg" class="journey-slide">
-                        <img src="tach-cafe-thom-lung-12.jpg" class="journey-slide">
-                        <img src="thu-hoach-cafe-chin-13.jpg" class="journey-slide">
+                        <img src="t8.jpg" class="journey-slide active">
+                        <img src="t9.jpg" class="journey-slide">
+                        <img src="t10.jpg" class="journey-slide">
+                        <img src="t11.jpg" class="journey-slide">
+                        <img src="t12.jpg" class="journey-slide">
+                        <img src="t13.jpg" class="journey-slide">
                     </div>
                 </div>
             </div>
@@ -407,13 +405,13 @@
                 
                 <div class="menu-card reveal">
                     <div class="menu-img">
-                        <img src="cafe-moc-dak-nong-1.jpg" class="menu-slide active">
-                        <img src="cafe-sua-da-dak-nong-2.jpg" class="menu-slide">
-                        <img src="cafe-den-da-traditional-3.jpg" class="menu-slide">
-                        <img src="bac-xiu-nong-signature-4.jpg" class="menu-slide">
-                        <img src="cafe-cot-dua-nature-5.jpg" class="menu-slide">
-                        <img src="matcha-latte-thoang-dang-6.jpg" class="menu-slide">
-                        <img src="tra-sua-tran-chau-suoi-ngan-7.jpg" class="menu-slide">
+                        <img src="m1.jpg" class="menu-slide active">
+                        <img src="m2.jpg" class="menu-slide">
+                        <img src="m3.jpg" class="menu-slide">
+                        <img src="m4.jpg" class="menu-slide">
+                        <img src="m5.jpg" class="menu-slide">
+                        <img src="m6.jpg" class="menu-slide">
+                        <img src="m7.jpg" class="menu-slide">
                     </div>
                     <div class="menu-info">
                         <p>Đậm vị truyền thống, đánh thức mọi giác quan khởi đầu ngày mới.</p>
@@ -422,13 +420,13 @@
 
                 <div class="menu-card reveal" style="transition-delay: 0.1s;">
                     <div class="menu-img">
-                        <img src="tra-trai-cay-ven-suoi-8.jpg" class="menu-slide active">
-                        <img src="tra-dao-cam-sa-co-dien-9.jpg" class="menu-slide">
-                        <img src="tra-vai-ho-cuong-ngot-ngao-10.jpg" class="menu-slide">
-                        <img src="tra-kiwi-thanh-mat-11.jpg" class="menu-slide">
-                        <img src="tra-chanh-signature-12.jpg" class="menu-slide">
-                        <img src="nuoc-ep-oi-dak-nong-13.jpg" class="menu-slide">
-                        <img src="nuoc-ep-ca-rot-can-tay-14.jpg" class="menu-slide">
+                        <img src="m8.jpg" class="menu-slide active">
+                        <img src="m9.jpg" class="menu-slide">
+                        <img src="m10.jpg" class="menu-slide">
+                        <img src="m11.jpg" class="menu-slide">
+                        <img src="m12.jpg" class="menu-slide">
+                        <img src="m13.jpg" class="menu-slide">
+                        <img src="m14.jpg" class="menu-slide">
                     </div>
                     <div class="menu-info">
                         <p>Thanh mát, sảng khoái kết hợp trái cây tươi bản địa.</p>
@@ -437,12 +435,12 @@
 
                 <div class="menu-card reveal" style="transition-delay: 0.2s;">
                     <div class="menu-img">
-                        <img src="diem-tam-sang-signature-15.jpg" class="menu-slide active">
-                        <img src="banh-mi-op-la-thanh-binh-16.jpg" class="menu-slide">
-                        <img src="bun-ca-suoi-dac-sac-17.jpg" class="menu-slide">
-                        <img src="pho-bo-gia-nghia-18.jpg" class="menu-slide">
-                        <img src="banh-ngot-decor-hoa-la-19.jpg" class="menu-slide">
-                        <img src="diem-tam-sang-nature-20.jpg" class="menu-slide">
+                        <img src="m15.jpg" class="menu-slide active">
+                        <img src="m16.jpg" class="menu-slide">
+                        <img src="m17.jpg" class="menu-slide">
+                        <img src="m18.jpg" class="menu-slide">
+                        <img src="m19.jpg" class="menu-slide">
+                        <img src="m20.jpg" class="menu-slide">
                     </div>
                     <div class="menu-info">
                         <p>Nạp đầy năng lượng cho một ngày thư giãn trọn vẹn bên bờ suối.</p>
@@ -452,7 +450,7 @@
             </div>
         </section>
 
-        <div class="parallax-banner reveal" style="background-image: linear-gradient(rgba(15, 23, 18, 0.7), rgba(15, 23, 18, 0.7)), url('banner-cau-quote-truyen-cam-hung.jpg');">
+        <div class="parallax-banner reveal" style="background-image: linear-gradient(rgba(15, 23, 18, 0.7), rgba(15, 23, 18, 0.7)), url('bn.jpg');">
             <h2>"Một ly cà phê ngon là chuyến du hành tuyệt vời của mọi giác quan."</h2>
         </div>
 
@@ -464,58 +462,58 @@
             
             <div class="gallery" id="dynamicGallery">
                 <div class="gallery-item reveal">
-                    <img src="anh-bo-suu-tap-1.jpg" class="gallery-slide active">
-                    <img src="goc-chill-quan-cafe-sinh-thai-2.jpg" class="gallery-slide">
-                    <img src="tach-cafe-thom-lung-3.jpg" class="gallery-slide">
-                    <img src="view-suoi-quan-cafe-4.jpg" class="gallery-slide">
-                    <img src="khong-gian-thoang-dang-5.jpg" class="gallery-slide">
-                    <img src="cay-co-hoa-la-quan-decor-6.jpg" class="gallery-slide">
-                    <img src="nature-quan-sinh-thai-7.jpg" class="gallery-slide">
+                    <img src="s1.jpg" class="gallery-slide active">
+                    <img src="s2.jpg" class="gallery-slide">
+                    <img src="s3.jpg" class="gallery-slide">
+                    <img src="s4.jpg" class="gallery-slide">
+                    <img src="s5.jpg" class="gallery-slide">
+                    <img src="s6.jpg" class="gallery-slide">
+                    <img src="s7.jpg" class="gallery-slide">
                 </div>
                 
                 <div class="gallery-item reveal">
-                    <img src="cafe-moc-dak-nong-8.jpg" class="gallery-slide active">
-                    <img src="view-quan-ben-suoi-9.jpg" class="gallery-slide">
-                    <img src="nuoc-ep-trai-cay-oi-dak-nong-10.jpg" class="gallery-slide">
-                    <img src="diem-tam-sang-signature-banh-mi-11.jpg" class="gallery-slide">
-                    <img src="goc-chill-cua-quan-thoang-dang-12.jpg" class="gallery-slide">
-                    <img src="khach-den-quan-doc-sach-13.jpg" class="gallery-slide">
+                    <img src="s8.jpg" class="gallery-slide active">
+                    <img src="s9.jpg" class="gallery-slide">
+                    <img src="s10.jpg" class="gallery-slide">
+                    <img src="s11.jpg" class="gallery-slide">
+                    <img src="s12.jpg" class="gallery-slide">
+                    <img src="s13.jpg" class="gallery-slide">
                 </div>
 
                 <div class="gallery-item reveal">
-                    <img src="view-quan-dem-trang-ngau-14.jpg" class="gallery-slide active">
-                    <img src="den-led-decor-quan-sinh-thai-15.jpg" class="gallery-slide">
-                    <img src="cafe-sua-da-Traditional-16.jpg" class="gallery-slide">
-                    <img src="tra-dao-cam-sa-ven-suoi-17.jpg" class="gallery-slide">
-                    <img src="pho-bo-signature-gia-nghia-18.jpg" class="gallery-slide">
-                    <img src="ban-ghe-go-decor-moc-mac-19.jpg" class="gallery-slide">
+                    <img src="s14.jpg" class="gallery-slide active">
+                    <img src="s15.jpg" class="gallery-slide">
+                    <img src="s16.jpg" class="gallery-slide">
+                    <img src="s17.jpg" class="gallery-slide">
+                    <img src="s18.jpg" class="gallery-slide">
+                    <img src="s19.jpg" class="gallery-slide">
                 </div>
 
                 <div class="gallery-item reveal">
-                    <img src="tranh-tuong-quan-decor-20.jpg" class="gallery-slide active">
-                    <img src="chau-cay-canh-trong-quan-21.jpg" class="gallery-slide">
-                    <img src="nhan-vien-than-thien-22.jpg" class="gallery-slide">
-                    <img src="menu-do-uong-nature-23.jpg" class="gallery-slide">
-                    <img src="tach-cafe-nguyen-chat-thoang-dang-24.jpg" class="gallery-slide">
-                    <img src="tra-trai-cay-ben-suoi-25.jpg" class="gallery-slide">
+                    <img src="s20.jpg" class="gallery-slide active">
+                    <img src="s21.jpg" class="gallery-slide">
+                    <img src="s22.jpg" class="gallery-slide">
+                    <img src="s23.jpg" class="gallery-slide">
+                    <img src="s24.jpg" class="gallery-slide">
+                    <img src="s25.jpg" class="gallery-slide">
                 </div>
 
                 <div class="gallery-item reveal">
-                    <img src="banh-ngot-decor-thoang-dang-26.jpg" class="gallery-slide active">
-                    <img src="bun-ca-suoi- signature-gia-nghia-27.jpg" class="gallery-slide">
-                    <img src="quay-pha-che-goc-nhin-moi-28.jpg" class="gallery-slide">
-                    <img src="quay-thu-ngan-than-thien-29.jpg" class="gallery-slide">
-                    <img src="goc-ngoi-chill-co-hoa-30.jpg" class="gallery-slide">
-                    <img src="khach-den-quan-thu-gian-thoang-dang-31.jpg" class="gallery-slide">
+                    <img src="s26.jpg" class="gallery-slide active">
+                    <img src="s27.jpg" class="gallery-slide">
+                    <img src="s28.jpg" class="gallery-slide">
+                    <img src="s29.jpg" class="gallery-slide">
+                    <img src="s30.jpg" class="gallery-slide">
+                    <img src="s31.jpg" class="gallery-slide">
                 </div>
 
                 <div class="gallery-item reveal">
-                    <img src="khach-den-quan-chup-anh-nature-32.jpg" class="gallery-slide active">
-                    <img src="khach-den-quan-hen-ho-ben-suoi-33.jpg" class="gallery-slide">
-                    <img src="view-quan-buoi-toi-den-led-34.jpg" class="gallery-slide">
-                    <img src="goc-ngoi-chill-thoang-dang-35.jpg" class="gallery-slide">
-                    <img src="goc-ngoi-chill-moc-mac-36.jpg" class="gallery-slide">
-                    <img src="khung-hinh-nature-quan-37.jpg" class="gallery-slide">
+                    <img src="s32.jpg" class="gallery-slide active">
+                    <img src="s33.jpg" class="gallery-slide">
+                    <img src="s34.jpg" class="gallery-slide">
+                    <img src="s35.jpg" class="gallery-slide">
+                    <img src="s36.jpg" class="gallery-slide">
+                    <img src="s37.jpg" class="gallery-slide">
                 </div>
             </div>
         </section>
@@ -620,7 +618,7 @@
             header.classList.toggle('scrolled', window.scrollY > 100);
         });
 
-        // Xử lý Menu Mobile
+        // JS Menu Mobile (Đã lược bỏ dòng đổi màu JS vì CSS tự lo)
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
