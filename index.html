@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= 1. HỆ TƯ TƯỞNG MÀU SẮC LUXURY ================= */
+        /* ================= MÀU SẮC & BIẾN ================= */
         :root {
             --primary: #0F1712;    
             --secondary: #F8F6F0;  
@@ -32,18 +32,15 @@
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
 
-        /* ================= 2. HIỆU ỨNG CAO CẤP (FADE-UP KHI CUỘN) ================= */
+        /* ================= HIỆU ỨNG ================= */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* ================= 3. HEADER & LOGO ================= */
+        /* ================= HEADER & LOGO ================= */
         header {
             position: fixed; top: 0; left: 0; width: 100%;
             padding: 30px 5%; display: flex; justify-content: space-between;
@@ -60,9 +57,7 @@
             transition: var(--transition); border-radius: 50%; background-color: var(--secondary); 
             padding: 5px; border: 1px solid var(--line); position: relative; z-index: 1002;
         }
-        header.scrolled .logo img {
-            height: 70px; width: 70px; padding: 3px; 
-        }
+        header.scrolled .logo img { height: 70px; width: 70px; padding: 3px; }
 
         .nav-menu { display: flex; gap: 50px; }
         .nav-menu a {
@@ -71,7 +66,6 @@
             position: relative;
         }
         header.scrolled .nav-menu a { color: var(--primary); }
-        
         .nav-menu a::after {
             content: ''; position: absolute; width: 0; height: 1px;
             bottom: -5px; left: 50%; transform: translateX(-50%);
@@ -80,17 +74,13 @@
         .nav-menu a:hover::after { width: 100%; }
         .nav-menu a:hover { color: var(--accent) !important; }
 
-        /* Nút 3 gạch (Mặc định ẩn trên PC) */
         .menu-toggle {
-            display: none; 
-            font-size: 2.2rem; cursor: pointer; 
-            color: var(--white); 
-            transition: var(--transition);
-            z-index: 99999; /* Ưu tiên cực cao */
+            display: none; font-size: 2.2rem; cursor: pointer; 
+            color: var(--white); transition: var(--transition); z-index: 99999;
         }
         header.scrolled .menu-toggle { color: var(--primary); }
 
-        /* ================= 4. HERO SECTION ================= */
+        /* ================= HERO SECTION (ĐẦU TRANG) ================= */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; color: var(--white); position: relative; overflow: hidden; z-index: 1;
@@ -120,64 +110,68 @@
         .section-title span { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 6px; color: var(--accent); }
         .section-title h2 i { font-style: italic; color: var(--accent); font-weight: 300; }
 
-        /* ================= 5. ABOUT SECTION ================= */
+        /* ================= ABOUT SECTION ================= */
         .about-grid { display: grid; grid-template-columns: 5fr 6fr; gap: 80px; align-items: center; }
         .about-img-wrapper { position: relative; padding-bottom: 30px; padding-right: 30px; }
-        .about-img-wrapper::after {
-            content: ''; position: absolute; top: 30px; left: 30px; right: 0; bottom: 0;
-            border: 1px solid var(--accent); z-index: -1;
-        }
-        .about-img { height: 650px; background: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1000') center/cover; z-index: 1; }
+        .about-img-wrapper::after { content: ''; position: absolute; top: 30px; left: 30px; right: 0; bottom: 0; border: 1px solid var(--accent); z-index: -1; }
+        .about-img { height: 650px; background-size: cover; background-position: center; z-index: 1; }
         .about-text p { font-size: 1.1rem; margin-bottom: 25px; color: #555; }
-        
         .btn-luxury {
             display: inline-block; padding: 15px 40px; margin-top: 20px;
             border: 1px solid var(--primary); color: var(--primary);
             font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase;
-            transition: var(--transition); background: transparent;
+            transition: var(--transition); background: transparent; cursor: pointer;
         }
         .btn-luxury:hover { background: var(--primary); color: var(--secondary); }
 
-        /* ================= 6. HÀNH TRÌNH HẠT CÀ PHÊ ================= */
+        /* ================= JOURNEY SECTION ================= */
         .journey-section { background-color: var(--white); border-top: 1px solid #EAEAEA; }
         .journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
         .journey-text h3 { font-size: 2.8rem; margin-bottom: 30px; }
         .journey-img-container { display: flex; gap: 30px; align-items: center; }
-        .journey-img-1 { height: 550px; width: 55%; background: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80') center/cover; }
-        .journey-img-2 { height: 450px; width: 45%; background: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80') center/cover; margin-top: 80px; }
+        
+        .journey-img-1, .journey-img-2 { position: relative; overflow: hidden; border-radius: 4px; }
+        .journey-img-1 { height: 550px; width: 55%; }
+        .journey-img-2 { height: 450px; width: 45%; margin-top: 80px; }
+        .journey-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .journey-slide.active { opacity: 1; z-index: 2; }
 
-        /* ================= 7. THỰC ĐƠN ================= */
+        /* ================= THỰC ĐƠN ================= */
         .menu-section { background-color: var(--secondary); }
         .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
-        .menu-card { background: var(--white); transition: var(--transition); }
+        .menu-card { background: var(--white); transition: var(--transition); border-radius: 4px; overflow: hidden; }
         .menu-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .menu-img { height: 350px; width: 100%; overflow: hidden; }
-        .menu-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease; }
-        .menu-card:hover .menu-img img { transform: scale(1.08); }
+        
+        .menu-img { height: 350px; width: 100%; overflow: hidden; position: relative; }
+        .menu-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: transform 1.5s ease, opacity 1s ease; }
+        .menu-slide.active { opacity: 1; z-index: 2; }
+        .menu-card:hover .menu-slide.active { transform: scale(1.08); } 
+        
         .menu-info { padding: 40px 30px; text-align: center; border: 1px solid #EAEAEA; border-top: none; }
-        .menu-info h4 { font-size: 1.6rem; margin-bottom: 15px; }
-        .menu-info p { font-size: 0.95rem; color: #666; margin-bottom: 25px; }
-        .menu-price { color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; }
+        .menu-info p { font-size: 0.95rem; color: #666; margin-bottom: 0; line-height: 1.6; }
 
-        /* ================= 8. PARALLAX BANNER ================= */
+        /* ================= PARALLAX BANNER ================= */
         .parallax-banner {
             height: 70vh;
-            background: linear-gradient(rgba(15, 23, 18, 0.7), rgba(15, 23, 18, 0.7)), 
-                        url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2000') center/cover;
-            background-attachment: fixed; 
+            background-attachment: fixed; background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white);
             padding: 0 5%;
         }
         .parallax-banner h2 { font-size: 4rem; font-style: italic; max-width: 900px; line-height: 1.4; color: var(--white); }
 
-        /* ================= 9. BỘ SƯU TẬP ================= */
+        /* ================= BỘ SƯU TẬP ================= */
         .gallery-section { background-color: var(--white); }
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
         .gallery-item { height: 450px; overflow: hidden; position: relative; cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: all 1s ease; filter: grayscale(20%); }
-        .gallery-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
+        .gallery-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0; transition: all 1.5s ease-in-out; 
+            filter: grayscale(20%); z-index: 1; transform: scale(1.02);
+        }
+        .gallery-slide.active { opacity: 1; z-index: 2; transform: scale(1); }
+        .gallery-item:hover .gallery-slide.active { transform: scale(1.05); filter: grayscale(0%); }
 
-        /* ================= 10. FOOTER ================= */
+        /* ================= FOOTER ================= */
         footer { background: var(--primary); color: var(--secondary); padding: 120px 10% 40px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 100px; }
         .footer-logo img { height: 100px; width: 100px; object-fit: contain; margin-bottom: 30px; border-radius: 50%; background-color: var(--secondary); padding: 5px; }
@@ -185,7 +179,7 @@
         .info-item { margin-bottom: 20px; font-size: 0.9rem; opacity: 0.8; }
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* ================= RESPONSIVE CAO CẤP CÓ MENU 3 GẠCH ================= */
+        /* ================= RESPONSIVE ================= */
         @media (max-width: 1024px) {
             section { padding: 100px 5%; }
             .about-grid, .journey-grid { grid-template-columns: 1fr; gap: 60px; }
@@ -196,13 +190,9 @@
             .parallax-banner h2 { font-size: 3rem; }
             .hero-content h1 { font-size: 4rem; }
             
-            /* KÍCH HOẠT NÚT 3 GẠCH */
             .menu-toggle { display: block; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); }
-            
-            /* CẤU HÌNH BẢNG MENU TRƯỢT TỪ TRÁI SANG */
             .nav-menu {
-                position: fixed; top: 0; left: -100%;
-                width: 80%; max-width: 350px; height: 100vh;
+                position: fixed; top: 0; left: -100%; width: 80%; max-width: 350px; height: 100vh;
                 background: rgba(248, 246, 240, 0.98); backdrop-filter: blur(20px);
                 flex-direction: column; justify-content: center; align-items: center;
                 gap: 50px; box-shadow: 10px 0 30px rgba(0,0,0,0.1);
@@ -225,7 +215,6 @@
             section { padding: 80px 5%; }
             .hero-content p.subtitle { font-size: 0.75rem; letter-spacing: 4px; }
             .hero-content h1 { font-size: 2.8rem; margin-bottom: 20px; }
-            
             .section-title h2 { font-size: 2.2rem; }
             .section-title { margin-bottom: 50px; }
             
@@ -248,9 +237,7 @@
         <a href="#" class="logo">
             <img src="logo.png" alt="Cẩm Cù House Logo">
         </a>
-        
         <div class="menu-toggle" id="mobile-menu">☰</div>
-        
         <ul class="nav-menu" id="nav-menu">
             <li><a href="#about">Không gian</a></li>
             <li><a href="#journey">Câu chuyện</a></li>
@@ -260,7 +247,74 @@
 
     <main>
         <section class="hero">
-            <div class="hero-slideshow-container" id="heroSlideshow"></div>
+            <div class="hero-slideshow-container" id="heroSlideshow">
+                <div class="slide active" style="background-image: url('h1.jpg');"></div>
+                <div class="slide" style="background-image: url('h2.jpg');"></div>
+                <div class="slide" style="background-image: url('h3.jpg');"></div>
+                <div class="slide" style="background-image: url('h4.jpg');"></div>
+                <div class="slide" style="background-image: url('h5.jpg');"></div>
+                <div class="slide" style="background-image: url('h6.jpg');"></div>
+                <div class="slide" style="background-image: url('h7.jpg');"></div>
+                <div class="slide" style="background-image: url('h8.jpg');"></div>
+                <div class="slide" style="background-image: url('h9.jpg');"></div>
+                <div class="slide" style="background-image: url('h10.jpg');"></div>
+                <div class="slide" style="background-image: url('h11.jpg');"></div>
+                <div class="slide" style="background-image: url('h12.jpg');"></div>
+                <div class="slide" style="background-image: url('h13.jpg');"></div>
+                <div class="slide" style="background-image: url('h14.jpg');"></div>
+                <div class="slide" style="background-image: url('h15.jpg');"></div>
+                <div class="slide" style="background-image: url('h16.jpg');"></div>
+                <div class="slide" style="background-image: url('h17.jpg');"></div>
+                <div class="slide" style="background-image: url('h18.jpg');"></div>
+                <div class="slide" style="background-image: url('h19.jpg');"></div>
+                <div class="slide" style="background-image: url('h20.jpg');"></div>
+                <div class="slide" style="background-image: url('h21.jpg');"></div>
+                <div class="slide" style="background-image: url('h22.jpg');"></div>
+                <div class="slide" style="background-image: url('h23.jpg');"></div>
+                <div class="slide" style="background-image: url('h24.jpg');"></div>
+                <div class="slide" style="background-image: url('h25.jpg');"></div>
+                <div class="slide" style="background-image: url('h26.jpg');"></div>
+                <div class="slide" style="background-image: url('h27.jpg');"></div>
+                <div class="slide" style="background-image: url('h28.jpg');"></div>
+                <div class="slide" style="background-image: url('h29.jpg');"></div>
+                <div class="slide" style="background-image: url('h30.jpg');"></div>
+                <div class="slide" style="background-image: url('h31.jpg');"></div>
+                <div class="slide" style="background-image: url('h32.jpg');"></div>
+                <div class="slide" style="background-image: url('h33.jpg');"></div>
+                <div class="slide" style="background-image: url('h34.jpg');"></div>
+                <div class="slide" style="background-image: url('h35.jpg');"></div>
+                <div class="slide" style="background-image: url('h36.jpg');"></div>
+                <div class="slide" style="background-image: url('h37.jpg');"></div>
+                <div class="slide" style="background-image: url('h38.jpg');"></div>
+                <div class="slide" style="background-image: url('h39.jpg');"></div>
+                <div class="slide" style="background-image: url('h40.jpg');"></div>
+                <div class="slide" style="background-image: url('h41.jpg');"></div>
+                <div class="slide" style="background-image: url('h42.jpg');"></div>
+                <div class="slide" style="background-image: url('h43.jpg');"></div>
+                <div class="slide" style="background-image: url('h44.jpg');"></div>
+                <div class="slide" style="background-image: url('h45.jpg');"></div>
+                <div class="slide" style="background-image: url('h46.jpg');"></div>
+                <div class="slide" style="background-image: url('h47.jpg');"></div>
+                <div class="slide" style="background-image: url('h48.jpg');"></div>
+                <div class="slide" style="background-image: url('h49.jpg');"></div>
+                <div class="slide" style="background-image: url('h50.jpg');"></div>
+                <div class="slide" style="background-image: url('h51.jpg');"></div>
+                <div class="slide" style="background-image: url('h52.jpg');"></div>
+                <div class="slide" style="background-image: url('h53.jpg');"></div>
+                <div class="slide" style="background-image: url('h54.jpg');"></div>
+                <div class="slide" style="background-image: url('h55.jpg');"></div>
+                <div class="slide" style="background-image: url('h56.jpg');"></div>
+                <div class="slide" style="background-image: url('h57.jpg');"></div>
+                <div class="slide" style="background-image: url('h58.jpg');"></div>
+                <div class="slide" style="background-image: url('h59.jpg');"></div>
+                <div class="slide" style="background-image: url('h60.jpg');"></div>
+                <div class="slide" style="background-image: url('h61.jpg');"></div>
+                <div class="slide" style="background-image: url('h62.jpg');"></div>
+                <div class="slide" style="background-image: url('h63.jpg');"></div>
+                <div class="slide" style="background-image: url('h64.jpg');"></div>
+                <div class="slide" style="background-image: url('h65.jpg');"></div>
+            </div>
+            
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <p class="subtitle">Đăk Nông, Việt Nam</p>
@@ -275,7 +329,7 @@
         <section id="about">
             <div class="about-grid">
                 <div class="about-img-wrapper reveal">
-                    <div class="about-img"></div>
+                    <div class="about-img" style="background-image: url('kg.jpg');"></div>
                 </div>
                 <div class="about-text reveal">
                     <div class="section-title" style="text-align: left; margin-bottom: 40px;">
@@ -284,7 +338,7 @@
                     </div>
                     <p>Tọa lạc tại Hẻm 437 Hùng Vương, Gia Nghĩa, Cẩm Cù House không chỉ là một quán cà phê. Đó là chốn về an yên, nơi bạn tìm lại bản thân giữa thanh âm róc rách của suối ngàn và hương vị cà phê mộc mạc.</p>
                     <p>Chúng tôi kiến tạo một không gian mở, nơi ranh giới giữa kiến trúc và thiên nhiên được xóa nhòa, mang đến bầu không khí trong lành tuyệt đối cho từng vị khách ghé thăm.</p>
-                    <a href="#contact" class="btn-luxury">Liên hệ </a>
+                    <a href="#contact" class="btn-luxury">Liên hệ đặt bàn</a>
                 </div>
             </div>
         </section>
@@ -300,8 +354,23 @@
                     <p style="font-size: 1.1rem; color: #555;">Quy trình rang xay thủ công cẩn trọng giúp đánh thức dải hương vị nguyên bản: đậm đà đặc trưng, đắng êm dịu và hậu vị ngọt sâu lắng kéo dài trong cuống họng.</p>
                 </div>
                 <div class="journey-img-container reveal">
-                    <div class="journey-img-1"></div>
-                    <div class="journey-img-2"></div>
+                    <div class="journey-img-1" id="journeySlider1">
+                        <img src="t1.jpg" class="journey-slide active">
+                        <img src="t2.jpg" class="journey-slide">
+                        <img src="t3.jpg" class="journey-slide">
+                        <img src="t4.jpg" class="journey-slide">
+                        <img src="t5.jpg" class="journey-slide">
+                        <img src="t6.jpg" class="journey-slide">
+                        <img src="t7.jpg" class="journey-slide">
+                    </div>
+                    <div class="journey-img-2" id="journeySlider2">
+                        <img src="t8.jpg" class="journey-slide active">
+                        <img src="t9.jpg" class="journey-slide">
+                        <img src="t10.jpg" class="journey-slide">
+                        <img src="t11.jpg" class="journey-slide">
+                        <img src="t12.jpg" class="journey-slide">
+                        <img src="t13.jpg" class="journey-slide">
+                    </div>
                 </div>
             </div>
         </section>
@@ -312,40 +381,55 @@
                 <h2>Bộ sưu tập <i>Đặc trưng</i></h2>
             </div>
             <div class="menu-grid">
+                
                 <div class="menu-card reveal">
                     <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1550186989-1ea8c5e0deeb?q=80&w=600" alt="Cà phê mộc">
+                        <img src="m1.jpg" class="menu-slide active">
+                        <img src="m2.jpg" class="menu-slide">
+                        <img src="m3.jpg" class="menu-slide">
+                        <img src="m4.jpg" class="menu-slide">
+                        <img src="m5.jpg" class="menu-slide">
+                        <img src="m6.jpg" class="menu-slide">
+                        <img src="m7.jpg" class="menu-slide">
                     </div>
                     <div class="menu-info">
-                        <h4>Cà Phê Mộc</h4>
                         <p>Đậm vị truyền thống, đánh thức mọi giác quan khởi đầu ngày mới.</p>
-                        <div class="menu-price">Từ 25.000đ</div>
                     </div>
                 </div>
+
                 <div class="menu-card reveal" style="transition-delay: 0.1s;">
                     <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=600" alt="Trà trái cây">
+                        <img src="m8.jpg" class="menu-slide active">
+                        <img src="m9.jpg" class="menu-slide">
+                        <img src="m10.jpg" class="menu-slide">
+                        <img src="m11.jpg" class="menu-slide">
+                        <img src="m12.jpg" class="menu-slide">
+                        <img src="m13.jpg" class="menu-slide">
+                        <img src="m14.jpg" class="menu-slide">
                     </div>
                     <div class="menu-info">
-                        <h4>Trà Nhiệt Đới</h4>
                         <p>Thanh mát, sảng khoái kết hợp trái cây tươi bản địa.</p>
-                        <div class="menu-price">Từ 40.000đ</div>
                     </div>
                 </div>
+
                 <div class="menu-card reveal" style="transition-delay: 0.2s;">
                     <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600" alt="Điểm tâm">
+                        <img src="m15.jpg" class="menu-slide active">
+                        <img src="m16.jpg" class="menu-slide">
+                        <img src="m17.jpg" class="menu-slide">
+                        <img src="m18.jpg" class="menu-slide">
+                        <img src="m19.jpg" class="menu-slide">
+                        <img src="m20.jpg" class="menu-slide">
                     </div>
                     <div class="menu-info">
-                        <h4>Điểm Tâm Sáng</h4>
                         <p>Nạp đầy năng lượng cho một ngày thư giãn trọn vẹn bên bờ suối.</p>
-                        <div class="menu-price">Theo thời giá</div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <div class="parallax-banner reveal">
+        <div class="parallax-banner reveal" style="background-image: linear-gradient(rgba(15, 23, 18, 0.7), rgba(15, 23, 18, 0.7)), url('bn.jpg');">
             <h2>"Một ly cà phê ngon là chuyến du hành tuyệt vời của mọi giác quan."</h2>
         </div>
 
@@ -354,13 +438,62 @@
                 <span>Góc nhìn nghệ thuật</span>
                 <h2>Khung hình <i>Cẩm Cù</i></h2>
             </div>
-            <div class="gallery">
-                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?q=80&w=800" alt="Cafe"></div>
-                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800" alt="Nature"></div>
-                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800" alt="Coffee"></div>
-                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800" alt="Space"></div>
-                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=800" alt="Food"></div>
-                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800" alt="Landscape"></div>
+            
+            <div class="gallery" id="dynamicGallery">
+                <div class="gallery-item reveal">
+                    <img src="s1.jpg" class="gallery-slide active">
+                    <img src="s2.jpg" class="gallery-slide">
+                    <img src="s3.jpg" class="gallery-slide">
+                    <img src="s4.jpg" class="gallery-slide">
+                    <img src="s5.jpg" class="gallery-slide">
+                    <img src="s6.jpg" class="gallery-slide">
+                    <img src="s7.jpg" class="gallery-slide">
+                </div>
+                
+                <div class="gallery-item reveal">
+                    <img src="s8.jpg" class="gallery-slide active">
+                    <img src="s9.jpg" class="gallery-slide">
+                    <img src="s10.jpg" class="gallery-slide">
+                    <img src="s11.jpg" class="gallery-slide">
+                    <img src="s12.jpg" class="gallery-slide">
+                    <img src="s13.jpg" class="gallery-slide">
+                </div>
+
+                <div class="gallery-item reveal">
+                    <img src="s14.jpg" class="gallery-slide active">
+                    <img src="s15.jpg" class="gallery-slide">
+                    <img src="s16.jpg" class="gallery-slide">
+                    <img src="s17.jpg" class="gallery-slide">
+                    <img src="s18.jpg" class="gallery-slide">
+                    <img src="s19.jpg" class="gallery-slide">
+                </div>
+
+                <div class="gallery-item reveal">
+                    <img src="s20.jpg" class="gallery-slide active">
+                    <img src="s21.jpg" class="gallery-slide">
+                    <img src="s22.jpg" class="gallery-slide">
+                    <img src="s23.jpg" class="gallery-slide">
+                    <img src="s24.jpg" class="gallery-slide">
+                    <img src="s25.jpg" class="gallery-slide">
+                </div>
+
+                <div class="gallery-item reveal">
+                    <img src="s26.jpg" class="gallery-slide active">
+                    <img src="s27.jpg" class="gallery-slide">
+                    <img src="s28.jpg" class="gallery-slide">
+                    <img src="s29.jpg" class="gallery-slide">
+                    <img src="s30.jpg" class="gallery-slide">
+                    <img src="s31.jpg" class="gallery-slide">
+                </div>
+
+                <div class="gallery-item reveal">
+                    <img src="s32.jpg" class="gallery-slide active">
+                    <img src="s33.jpg" class="gallery-slide">
+                    <img src="s34.jpg" class="gallery-slide">
+                    <img src="s35.jpg" class="gallery-slide">
+                    <img src="s36.jpg" class="gallery-slide">
+                    <img src="s37.jpg" class="gallery-slide">
+                </div>
             </div>
         </section>
     </main>
@@ -390,40 +523,12 @@
     </footer>
 
     <script>
-        // Logic Slideshow
-        const slideshowImages = [
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000', 
-            'https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=2000',
-            'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2000',
-            'https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=2000',
-            'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2000',
-            'https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=2000',
-            'https://images.unsplash.com/photo-1507133750040-4a8f57021571?q=80&w=2000',
-            'https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2000',
-            'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000',
-            'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=2000',
-            'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2000',
-            'https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=2000',
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000',
-            'https://images.unsplash.com/photo-1520038622115-4ae037c75620?q=80&w=2000',
-            'https://images.unsplash.com/photo-1596700030588-4c9197c1d763?q=80&w=2000',
-            'https://images.unsplash.com/photo-1534040385192-340dc08a8b13?q=80&w=2000',
-            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2000',
-            'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2000',
-            'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=2000',
-            'https://images.unsplash.com/photo-1493770348161-369560ae357d?q=80&w=2000'
-        ];
-
+        // Khởi động trượt cho Slider Đầu trang (Hero)
         function startHeroSlideshow() {
-            const container = document.getElementById('heroSlideshow');
+            const slides = document.querySelectorAll('#heroSlideshow .slide');
             let currentSlideIndex = 0;
-            slideshowImages.forEach((img, index) => {
-                const div = document.createElement('div');
-                div.className = index === 0 ? 'slide active' : 'slide';
-                div.style.backgroundImage = `url('${img}')`;
-                container.appendChild(div);
-            });
-            const slides = container.querySelectorAll('.slide');
+            if(slides.length <= 1) return; 
+            
             setInterval(() => {
                 slides[currentSlideIndex].classList.remove('active');
                 currentSlideIndex = (currentSlideIndex + 1) % slides.length;
@@ -431,18 +536,68 @@
             }, 6000); 
         }
 
+        // Khởi động trượt tự động cho mọi thành phần chứa nhiều ảnh (Hành trình, Thực đơn)
+        function startGenericSliders(containerSelector, slideClass, interval) {
+            const containers = document.querySelectorAll(containerSelector);
+            containers.forEach(container => {
+                const slides = container.querySelectorAll(slideClass);
+                let current = 0;
+                if(slides.length > 1) {
+                    setInterval(() => {
+                        slides[current].classList.remove('active');
+                        current = (current + 1) % slides.length;
+                        slides[current].classList.add('active');
+                    }, interval);
+                }
+            });
+        }
+
+        // Khởi động trượt so le cho Bộ sưu tập (Gallery)
+        function initDynamicGallery() {
+            const galleryItems = document.querySelectorAll('#dynamicGallery .gallery-item');
+            
+            galleryItems.forEach(item => {
+                const slides = item.querySelectorAll('.gallery-slide');
+                item.dataset.total = slides.length;
+                item.dataset.currentImg = 0;
+            });
+
+            let isOddTurn = true;
+            setInterval(() => {
+                galleryItems.forEach((item, idx) => {
+                    const isGroupA = (idx % 2 === 0); 
+                    const totalSlides = parseInt(item.dataset.total);
+                    
+                    if (totalSlides > 1 && ((isOddTurn && isGroupA) || (!isOddTurn && !isGroupA))) {
+                        const slides = item.querySelectorAll('.gallery-slide');
+                        let curr = parseInt(item.dataset.currentImg);
+                        
+                        slides[curr].classList.remove('active'); 
+                        curr = (curr + 1) % totalSlides; 
+                        item.dataset.currentImg = curr;
+                        slides[curr].classList.add('active'); 
+                    }
+                });
+                isOddTurn = !isOddTurn; 
+            }, 5000);
+        }
+
+        // KHỞI CHẠY TẤT CẢ KHI TRANG TẢI XONG
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
             startHeroSlideshow();
+            startGenericSliders('.journey-img-1, .journey-img-2', '.journey-slide', 4500); 
+            startGenericSliders('.menu-img', '.menu-slide', 5500); 
+            initDynamicGallery(); 
         });
 
-        // Logic Header cuộn trang
+        // Xử lý Cuộn trang
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
             header.classList.toggle('scrolled', window.scrollY > 100);
         });
 
-        // LOGIC MENU MOBILE
+        // Xử lý Menu Mobile
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -450,7 +605,7 @@
             navMenu.classList.toggle('active');
             if(navMenu.classList.contains('active')){
                 mobileMenuBtn.innerHTML = '✕';
-                mobileMenuBtn.style.color = 'var(--primary)'; // Icon X đổi màu tối trên nền sáng của bảng menu
+                mobileMenuBtn.style.color = 'var(--primary)'; 
             } else {
                 mobileMenuBtn.innerHTML = '☰';
                 if(window.scrollY > 100) {
@@ -461,11 +616,9 @@
             }
         });
 
-        // Logic Cuộn mượt & Tự đóng Menu
         document.querySelectorAll('.nav-menu a, .btn-luxury').forEach(a => {
             a.addEventListener('click', e => {
                 e.preventDefault();
-                // Đóng menu nếu đang mở trên mobile
                 navMenu.classList.remove('active');
                 mobileMenuBtn.innerHTML = '☰';
                 if(window.scrollY > 100) {
@@ -477,7 +630,7 @@
             });
         });
 
-        // LOGIC HIỆU ỨNG CAO CẤP (SCROLL REVEAL)
+        // Hiệu ứng Reveal
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
