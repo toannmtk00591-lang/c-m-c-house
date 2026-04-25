@@ -16,7 +16,10 @@
             --text: #2A2A2A;       
             --white: #ffffff;
             --line: rgba(212, 175, 55, 0.3); 
-            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* 📸 HIỆU ỨNG CHUYỂN CẢNH MỚI (Cubic-Bezier cho cảm giác mượt mà) */
+            --transition-smooth: opacity 2.5s cubic-bezier(0.22, 1, 0.36, 1), transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition-menu: opacity 2s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition-common: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,14 +32,14 @@
             font-weight: 300;
         }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 400; color: var(--primary); }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        a { text-decoration: none; color: inherit; transition: var(--transition-common); }
         ul { list-style: none; }
 
-        /* ================= HIỆU ỨNG ================= */
+        /* ================= HIỆU ỨNG REVEAL CHUNG ================= */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -44,7 +47,7 @@
         header {
             position: fixed; top: 0; left: 0; width: 100%;
             padding: 30px 4%; display: flex; justify-content: space-between;
-            align-items: center; z-index: 1000; transition: var(--transition);
+            align-items: center; z-index: 1000; transition: var(--transition-common);
             border-bottom: 1px solid transparent;
         }
         header.scrolled {
@@ -54,7 +57,7 @@
 
         .logo img {
             height: 90px; width: 90px; object-fit: contain; display: block; 
-            transition: var(--transition); border-radius: 50%; background-color: var(--secondary); 
+            transition: var(--transition-common); border-radius: 50%; background-color: var(--secondary); 
             padding: 5px; border: 1px solid var(--line); position: relative; z-index: 1002;
         }
         header.scrolled .logo img { height: 70px; width: 70px; padding: 3px; }
@@ -69,14 +72,14 @@
         .nav-menu a::after {
             content: ''; position: absolute; width: 0; height: 1px;
             bottom: -5px; left: 50%; transform: translateX(-50%);
-            background-color: var(--accent); transition: var(--transition);
+            background-color: var(--accent); transition: var(--transition-common);
         }
         .nav-menu a:hover::after { width: 100%; }
         .nav-menu a:hover { color: var(--accent) !important; }
 
         .menu-toggle {
             display: none; font-size: 2.2rem; cursor: pointer; 
-            color: var(--white); transition: var(--transition); z-index: 99999;
+            color: var(--white); transition: var(--transition-common); z-index: 99999;
         }
         header.scrolled .menu-toggle { color: var(--primary); }
 
@@ -86,7 +89,16 @@
             text-align: center; color: var(--white); position: relative; overflow: hidden; z-index: 1;
         }
         .hero-slideshow-container, .slide, .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .slide { background-size: cover; background-position: center; opacity: 0; transition: opacity 2s ease-in-out; z-index: 2; transform: scale(1.05); }
+        
+        /* 📸 TỐI ƯU CHUYỂN CẢNH HERO SLIDE (Mượt mà hơn) */
+        .slide { 
+            background-size: cover; 
+            background-position: center; 
+            opacity: 0; 
+            transition: var(--transition-smooth); /* Sử dụng thời gian dài và Easing mượt */
+            z-index: 2; 
+            transform: scale(1.03); /* Giảm độ scale nhẹ hơn để tránh giật hình */
+        }
         .slide.active { opacity: 1; z-index: 3; transform: scale(1); }
         .hero-overlay { background: linear-gradient(rgba(15, 23, 18, 0.6), rgba(15, 23, 18, 0.4)); z-index: 5; }
         
@@ -120,7 +132,7 @@
             display: inline-block; padding: 15px 40px; margin-top: 20px;
             border: 1px solid var(--primary); color: var(--primary);
             font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase;
-            transition: var(--transition); background: transparent; cursor: pointer;
+            transition: var(--transition-common); background: transparent; cursor: pointer;
         }
         .btn-luxury:hover { background: var(--primary); color: var(--secondary); }
 
@@ -133,24 +145,40 @@
         .journey-img-1, .journey-img-2 { position: relative; overflow: hidden; border-radius: 4px; }
         .journey-img-1 { height: 650px; width: 55%; }
         .journey-img-2 { height: 550px; width: 45%; margin-top: 80px; }
-        .journey-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        
+        /* 📸 TỐI ƯU CHUYỂN CẢNH HÀNH TRÌNH SLIDE (Opacity mượt mà hơn) */
+        .journey-slide { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: cover; 
+            opacity: 0; 
+            /* Chỉ tập trung vào Opacity và dùng thời gian 2s để mờ dần mượt */
+            transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
         .journey-slide.active { opacity: 1; z-index: 2; }
 
         /* ================= THỰC ĐƠN ================= */
         .menu-section { background-color: var(--secondary); }
         .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .menu-card { background: var(--white); transition: var(--transition); border-radius: 4px; overflow: hidden; }
+        .menu-card { background: var(--white); transition: var(--transition-common); border-radius: 4px; overflow: hidden; }
         .menu-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
         
         .menu-img { height: 500px; width: 100%; overflow: hidden; position: relative; }
-        .menu-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: transform 1.5s ease, opacity 1s ease; }
+        
+        /* 📸 TỐI ƯU CHUYỂN CẢNH THỰC ĐƠN SLIDE (Kết hợp Scale và Opacity mượt) */
+        .menu-slide { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: cover; 
+            opacity: 0; 
+            /* Dùng thời gian 2s mờ dần, và thời gian transform ngắn hơn một chút cho hiệu ứng scale nhanh */
+            transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
         .menu-slide.active { opacity: 1; z-index: 2; }
-        .menu-card:hover .menu-slide.active { transform: scale(1.08); } 
+        .menu-card:hover .menu-slide.active { transform: scale(1.05); }  /* Scale nhẹ khi hover */
         
         .menu-info { padding: 40px 30px; text-align: center; border: 1px solid #EAEAEA; border-top: none; }
         .menu-info p { font-size: 0.95rem; color: #666; margin-bottom: 0; line-height: 1.6; }
 
-        /* ================= PARALLAX BANNER ================= */
+        /* ================= PARALLAX BANNER (Giữ Reveal mượt) ================= */
         .parallax-banner {
             height: 70vh; max-width: 100%;
             background-attachment: fixed; background-size: cover; background-position: center;
@@ -163,13 +191,20 @@
         .gallery-section { background-color: var(--white); }
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
         .gallery-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; }
+        
+        /* 📸 TỐI ƯU CHUYỂN CẢNH BỘ SƯU TẬP SLIDE (Mờ dần mượt kết hợp Grayscale) */
         .gallery-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0; transition: all 1.5s ease-in-out; 
-            filter: grayscale(20%); z-index: 1; transform: scale(1.02);
+            object-fit: cover; 
+            opacity: 0; 
+            /* Tập trung vào Opacity và Transform mượt 2s */
+            transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1), transform 2s cubic-bezier(0.22, 1, 0.36, 1), filter 1s cubic-bezier(0.22, 1, 0.36, 1); 
+            filter: grayscale(20%); 
+            z-index: 1; 
+            transform: scale(1.015); /* Scale ban đầu rất nhẹ */
         }
         .gallery-slide.active { opacity: 1; z-index: 2; transform: scale(1); }
-        .gallery-item:hover .gallery-slide.active { transform: scale(1.05); filter: grayscale(0%); }
+        .gallery-item:hover .gallery-slide.active { transform: scale(1.04); filter: grayscale(0%); } /* Scale mượt khi hover */
 
         /* ================= FOOTER ================= */
         footer { background: var(--primary); color: var(--secondary); padding: 120px 4% 40px; max-width: 1920px; margin: 0 auto; }
@@ -179,7 +214,7 @@
         .info-item { margin-bottom: 20px; font-size: 0.9rem; opacity: 0.8; }
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* ================= RESPONSIVE DI ĐỘNG ================= */
+        /* ================= RESPONSIVE ================= */
         @media (max-width: 1024px) {
             section { padding: 100px 5%; }
             .about-grid, .journey-grid { grid-template-columns: 1fr; gap: 60px; }
@@ -195,25 +230,15 @@
             .hero-content h1 { font-size: 4rem; }
             
             .menu-toggle { display: block; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); }
-            
             .nav-menu {
-                position: absolute; top: 100%; right: 5%; left: auto;
-                width: max-content; min-width: 180px; height: auto;
-                background: var(--secondary); 
-                /* Đã đổi align-items thành center để các chữ căn giữa khung */
-                flex-direction: column; justify-content: flex-start; align-items: center; 
-                padding: 25px 30px; gap: 25px; 
-                box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-                border-radius: 4px;
-                
-                opacity: 0; visibility: hidden; transform: translateY(-10px);
-                transition: all 0.4s ease; z-index: 1001;
+                position: fixed; top: 0; left: -100%; width: 80%; max-width: 350px; height: 100vh;
+                background: rgba(248, 246, 240, 0.98); backdrop-filter: blur(20px);
+                flex-direction: column; justify-content: center; align-items: center;
+                gap: 50px; box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+                transition: left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1001;
             }
-            .nav-menu.active { 
-                opacity: 1; visibility: visible; transform: translateY(0); 
-            }
-            /* Đã đổi text-align thành center */
-            .nav-menu a { color: var(--text) !important; font-size: 0.8rem; letter-spacing: 2px; text-align: center; }
+            .nav-menu.active { left: 0; }
+            .nav-menu a { color: var(--primary) !important; font-size: 1.2rem; }
 
             footer { padding: 100px 5% 40px; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 50px; margin-bottom: 60px; }
@@ -246,8 +271,6 @@
             
             .gallery { grid-template-columns: 1fr; gap: 2px; } 
             footer { padding: 80px 5% 40px; }
-            
-            .nav-menu { right: 5%; left: 5%; width: auto; padding: 20px; }
         }
     </style>
 </head>
@@ -550,6 +573,7 @@
             if(slides.length <= 1) return; 
             
             setInterval(() => {
+                // 📸 TỐI ƯU JS TIMING: Giữ thời gian interval 6s để khớp với transition 2.5s
                 slides[currentSlideIndex].classList.remove('active');
                 currentSlideIndex = (currentSlideIndex + 1) % slides.length;
                 slides[currentSlideIndex].classList.add('active');
@@ -564,6 +588,7 @@
                 let current = 0;
                 if(slides.length > 1) {
                     setInterval(() => {
+                        // 📸 TỐI ƯU JS TIMING: Giữ thời gian interval để mờ dần mượt 2s hoàn tất
                         slides[current].classList.remove('active');
                         current = (current + 1) % slides.length;
                         slides[current].classList.add('active');
@@ -592,6 +617,7 @@
                         const slides = item.querySelectorAll('.gallery-slide');
                         let curr = parseInt(item.dataset.currentImg);
                         
+                        // 📸 TỐI ƯU JS TIMING: Giữ thời gian interval 5s khớp với transition mượt 2s
                         slides[curr].classList.remove('active'); 
                         curr = (curr + 1) % totalSlides; 
                         item.dataset.currentImg = curr;
@@ -606,8 +632,9 @@
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
             startHeroSlideshow();
-            startGenericSliders('.journey-img-1, .journey-img-2', '.journey-slide', 4500); 
-            startGenericSliders('.menu-img', '.menu-slide', 5500); 
+            // 📸 TỐI ƯU TIMING JS: Đảm bảo thời gian interval dài hơn transition
+            startGenericSliders('.journey-img-1, .journey-img-2', '.journey-slide', 5000); // 5s interval cho 2s transition
+            startGenericSliders('.menu-img', '.menu-slide', 6000); // 6s interval cho 2s transition
             initDynamicGallery(); 
         });
 
@@ -617,7 +644,7 @@
             header.classList.toggle('scrolled', window.scrollY > 100);
         });
 
-        // JS Menu Mobile (Đã lược bỏ dòng đổi màu JS vì CSS tự lo)
+        // Xử lý Menu Mobile
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -625,8 +652,14 @@
             navMenu.classList.toggle('active');
             if(navMenu.classList.contains('active')){
                 mobileMenuBtn.innerHTML = '✕';
+                mobileMenuBtn.style.color = 'var(--primary)'; 
             } else {
                 mobileMenuBtn.innerHTML = '☰';
+                if(window.scrollY > 100) {
+                     mobileMenuBtn.style.color = 'var(--primary)';
+                } else {
+                     mobileMenuBtn.style.color = 'var(--white)';
+                }
             }
         });
 
@@ -635,6 +668,11 @@
                 e.preventDefault();
                 navMenu.classList.remove('active');
                 mobileMenuBtn.innerHTML = '☰';
+                if(window.scrollY > 100) {
+                     mobileMenuBtn.style.color = 'var(--primary)';
+                } else {
+                     mobileMenuBtn.style.color = 'var(--white)';
+                }
                 document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
