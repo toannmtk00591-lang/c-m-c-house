@@ -43,12 +43,12 @@
         /* ================= HEADER & LOGO ================= */
         header {
             position: fixed; top: 0; left: 0; width: 100%;
-            padding: 30px 5%; display: flex; justify-content: space-between;
+            padding: 30px 4%; display: flex; justify-content: space-between;
             align-items: center; z-index: 1000; transition: var(--transition);
             border-bottom: 1px solid transparent;
         }
         header.scrolled {
-            padding: 15px 5%; background: rgba(248, 246, 240, 0.95); 
+            padding: 15px 4%; background: rgba(248, 246, 240, 0.95); 
             backdrop-filter: blur(15px); border-bottom: 1px solid var(--line);
         }
 
@@ -104,7 +104,9 @@
         @keyframes bounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 10px); } }
 
         /* ================= CÁC SECTION CHUNG ================= */
-        section { padding: 150px 10%; position: relative; }
+        /* Đã thu hẹp lề 2 bên từ 10% xuống 4%, đặt max-width to ra để ảnh rộng hơn */
+        section { padding: 150px 4%; position: relative; max-width: 1920px; margin: 0 auto; }
+        
         .section-title { text-align: center; margin-bottom: 90px; }
         .section-title h2 { font-size: 3.5rem; line-height: 1.2; margin-top: 15px; }
         .section-title span { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 6px; color: var(--accent); }
@@ -114,7 +116,10 @@
         .about-grid { display: grid; grid-template-columns: 5fr 6fr; gap: 80px; align-items: center; }
         .about-img-wrapper { position: relative; padding-bottom: 30px; padding-right: 30px; }
         .about-img-wrapper::after { content: ''; position: absolute; top: 30px; left: 30px; right: 0; bottom: 0; border: 1px solid var(--accent); z-index: -1; }
-        .about-img { height: 650px; background-size: cover; background-position: center; z-index: 1; }
+        
+        /* Tăng chiều cao ảnh Không gian */
+        .about-img { height: 750px; background-size: cover; background-position: center; z-index: 1; }
+        
         .about-text p { font-size: 1.1rem; margin-bottom: 25px; color: #555; }
         .btn-luxury {
             display: inline-block; padding: 15px 40px; margin-top: 20px;
@@ -131,18 +136,23 @@
         .journey-img-container { display: flex; gap: 30px; align-items: center; }
         
         .journey-img-1, .journey-img-2 { position: relative; overflow: hidden; border-radius: 4px; }
-        .journey-img-1 { height: 550px; width: 55%; }
-        .journey-img-2 { height: 450px; width: 45%; margin-top: 80px; }
+        
+        /* Tăng chiều cao ảnh Hành trình */
+        .journey-img-1 { height: 650px; width: 55%; }
+        .journey-img-2 { height: 550px; width: 45%; margin-top: 80px; }
+        
         .journey-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .journey-slide.active { opacity: 1; z-index: 2; }
 
         /* ================= THỰC ĐƠN ================= */
         .menu-section { background-color: var(--secondary); }
-        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
         .menu-card { background: var(--white); transition: var(--transition); border-radius: 4px; overflow: hidden; }
         .menu-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
         
-        .menu-img { height: 350px; width: 100%; overflow: hidden; position: relative; }
+        /* Tăng chiều cao Khung Thực Đơn (350px -> 500px) */
+        .menu-img { height: 500px; width: 100%; overflow: hidden; position: relative; }
+        
         .menu-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: transform 1.5s ease, opacity 1s ease; }
         .menu-slide.active { opacity: 1; z-index: 2; }
         .menu-card:hover .menu-slide.active { transform: scale(1.08); } 
@@ -152,7 +162,7 @@
 
         /* ================= PARALLAX BANNER ================= */
         .parallax-banner {
-            height: 70vh;
+            height: 70vh; max-width: 100%; /* Banner cho full viền */
             background-attachment: fixed; background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white);
             padding: 0 5%;
@@ -162,7 +172,10 @@
         /* ================= BỘ SƯU TẬP ================= */
         .gallery-section { background-color: var(--white); }
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-        .gallery-item { height: 450px; overflow: hidden; position: relative; cursor: pointer; }
+        
+        /* Tăng chiều cao Khung Bộ Sưu Tập (450px -> 600px) */
+        .gallery-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; }
+        
         .gallery-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; opacity: 0; transition: all 1.5s ease-in-out; 
@@ -172,7 +185,8 @@
         .gallery-item:hover .gallery-slide.active { transform: scale(1.05); filter: grayscale(0%); }
 
         /* ================= FOOTER ================= */
-        footer { background: var(--primary); color: var(--secondary); padding: 120px 10% 40px; }
+        /* Điều chỉnh padding 2 bên của Footer khớp với Section bên trên */
+        footer { background: var(--primary); color: var(--secondary); padding: 120px 4% 40px; max-width: 1920px; margin: 0 auto; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 100px; }
         .footer-logo img { height: 100px; width: 100px; object-fit: contain; margin-bottom: 30px; border-radius: 50%; background-color: var(--secondary); padding: 5px; }
         .footer-desc { opacity: 0.7; max-width: 400px; font-size: 0.95rem; }
@@ -186,6 +200,11 @@
             .about-img-wrapper::after { display: none; }
             .about-img { height: 500px; }
             .menu-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            /* Máy tính bảng: Điều chỉnh khung ảnh nhỏ lại chút */
+            .menu-img { height: 400px; }
+            .gallery-item { height: 450px; }
+
             .parallax-banner { background-attachment: scroll; }
             .parallax-banner h2 { font-size: 3rem; }
             .hero-content h1 { font-size: 4rem; }
@@ -201,6 +220,7 @@
             .nav-menu.active { left: 0; }
             .nav-menu a { color: var(--primary) !important; font-size: 1.2rem; }
 
+            footer { padding: 100px 5% 40px; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 50px; margin-bottom: 60px; }
             .footer-logo img { margin: 0 auto 30px auto; }
             .footer-desc { margin: 0 auto; }
@@ -223,11 +243,17 @@
             .journey-img-1, .journey-img-2 { width: 100%; height: 350px; margin-top: 0; }
             
             .menu-grid { grid-template-columns: 1fr; gap: 30px; }
+            
+            /* Điện thoại: Cấu hình lại chiều cao khung ảnh vừa phải */
+            .menu-img { height: 350px; }
+            .gallery-item { height: 350px; }
+
             .parallax-banner { height: 50vh; }
             .parallax-banner h2 { font-size: 2rem; }
             
             .gallery { grid-template-columns: 1fr; gap: 2px; } 
-            .gallery-item { height: 400px; }
+            
+            footer { padding: 80px 5% 40px; }
         }
     </style>
 </head>
@@ -562,7 +588,7 @@
                 item.dataset.currentImg = 0;
             });
 
-            let isOddTurn = true;
+            let isOddTurn = true; 
             setInterval(() => {
                 galleryItems.forEach((item, idx) => {
                     const isGroupA = (idx % 2 === 0); 
