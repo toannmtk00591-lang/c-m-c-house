@@ -5,24 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cẩm Cù House | Tinh Hoa Cà Phê Sinh Thái</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= MÀU SẮC & BIẾN ================= */
+        /* ================= MÀU SẮC & BIẾN CAO CẤP NHẤT ================= */
         :root {
-            --primary: #0F1712;    
-            --secondary: #F8F6F0;  
-            --accent: #D4AF37;     
-            --text: #2A2A2A;       
+            --primary: #0a0e0c;    /* Đen rêu cực sâu (Sang hơn đen thui) */
+            --secondary: #F4F2EB;  /* Trắng ngà trầm (Giấy bồi tạp chí) */
+            --accent: #C5A059;     /* Vàng Gold tĩnh (Muted Gold) */
+            --text: #1a1a1a;       
+            --text-light: #e0e0e0; 
             --white: #ffffff;
-            --line: rgba(212, 175, 55, 0.3); 
-            /* 📸 HIỆU ỨNG CHUYỂN CẢNH MỚI (Cubic-Bezier cho cảm giác mượt mà) */
+            --line: rgba(197, 160, 89, 0.4); 
+            --line-dark: rgba(10, 14, 12, 0.1);
+            
             --transition-smooth: opacity 2.5s cubic-bezier(0.22, 1, 0.36, 1), transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
-            --transition-menu: opacity 2s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-            --transition-common: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-menu: opacity 2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition-common: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--secondary);
@@ -30,29 +33,39 @@
             line-height: 1.8;
             overflow-x: hidden;
             font-weight: 300;
+            -webkit-font-smoothing: antialiased; /* Làm nét chữ chuẩn Apple */
         }
+
+        /* 📸 HIỆU ỨNG FILM GRAIN (Hạt nhiễu điện ảnh siêu cao cấp) */
+        body::after {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04; pointer-events: none; z-index: 9999;
+        }
+
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 400; color: var(--primary); }
         a { text-decoration: none; color: inherit; transition: var(--transition-common); }
         ul { list-style: none; }
 
-        /* ================= HIỆU ỨNG REVEAL CHUNG ================= */
+        /* ================= HIỆU ỨNG REVEAL CHUẨN QUỐC TẾ ================= */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(50px);
+            transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* ================= HEADER & LOGO ================= */
+        /* ================= HEADER KÍNH MỜ MỎNG ================= */
         header {
             position: fixed; top: 0; left: 0; width: 100%;
-            padding: 30px 4%; display: flex; justify-content: space-between;
+            padding: 35px 5%; display: flex; justify-content: space-between;
             align-items: center; z-index: 1000; transition: var(--transition-common);
             border-bottom: 1px solid transparent;
         }
         header.scrolled {
-            padding: 15px 4%; background: rgba(248, 246, 240, 0.95); 
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--line);
+            padding: 15px 5%; background: rgba(244, 242, 235, 0.9); 
+            backdrop-filter: blur(20px); border-bottom: 1px solid var(--line);
         }
 
         .logo img {
@@ -60,19 +73,19 @@
             transition: var(--transition-common); border-radius: 50%; background-color: var(--secondary); 
             padding: 5px; border: 1px solid var(--line); position: relative; z-index: 1002;
         }
-        header.scrolled .logo img { height: 70px; width: 70px; padding: 3px; }
+        header.scrolled .logo img { height: 60px; width: 60px; padding: 2px; }
 
-        .nav-menu { display: flex; gap: 50px; }
+        .nav-menu { display: flex; gap: 60px; }
         .nav-menu a {
-            color: var(--white); font-size: 0.75rem;
-            text-transform: uppercase; letter-spacing: 3px; font-weight: 500; 
-            position: relative;
+            color: var(--white); font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 4px; font-weight: 500; 
+            position: relative; padding-bottom: 5px;
         }
         header.scrolled .nav-menu a { color: var(--primary); }
+        
         .nav-menu a::after {
             content: ''; position: absolute; width: 0; height: 1px;
-            bottom: -5px; left: 50%; transform: translateX(-50%);
-            background-color: var(--accent); transition: var(--transition-common);
+            bottom: 0; left: 0; background-color: var(--accent); transition: var(--transition-common);
         }
         .nav-menu a:hover::after { width: 100%; }
         .nav-menu a:hover { color: var(--accent) !important; }
@@ -83,194 +96,196 @@
         }
         header.scrolled .menu-toggle { color: var(--primary); }
 
-        /* ================= HERO SECTION (ĐẦU TRANG) ================= */
+        /* ================= HERO SECTION (ĐẬM CHẤT ĐIỆN ẢNH) ================= */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; color: var(--white); position: relative; overflow: hidden; z-index: 1;
         }
         .hero-slideshow-container, .slide, .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         
-        /* 📸 TỐI ƯU CHUYỂN CẢNH HERO SLIDE (Mượt mà hơn) */
         .slide { 
-            background-size: cover; 
-            background-position: center; 
-            opacity: 0; 
-            transition: var(--transition-smooth); /* Sử dụng thời gian dài và Easing mượt */
-            z-index: 2; 
-            transform: scale(1.03); /* Giảm độ scale nhẹ hơn để tránh giật hình */
+            background-size: cover; background-position: center; 
+            opacity: 0; transition: var(--transition-smooth); 
+            z-index: 2; transform: scale(1.05); filter: contrast(1.1) brightness(0.95);
         }
         .slide.active { opacity: 1; z-index: 3; transform: scale(1); }
-        .hero-overlay { background: linear-gradient(rgba(15, 23, 18, 0.6), rgba(15, 23, 18, 0.4)); z-index: 5; }
+        .hero-overlay { background: radial-gradient(circle, rgba(10, 14, 12, 0.3) 0%, rgba(10, 14, 12, 0.7) 100%); z-index: 5; }
         
         .hero-content { z-index: 10; position: relative; padding: 0 5%; width: 100%; }
-        .hero-content p.subtitle { font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-        .hero-content h1 { font-size: 5rem; margin-bottom: 30px; color: var(--white); font-weight: 400; letter-spacing: 2px; }
+        .hero-content p.subtitle { font-size: 0.8rem; letter-spacing: 10px; text-transform: uppercase; color: var(--accent); margin-bottom: 25px; font-weight: 400; }
+        .hero-content h1 { font-size: 6.5vw; margin-bottom: 30px; color: var(--white); font-weight: 400; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         
         .scroll-indicator {
             position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-            z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 10px;
-            color: var(--white); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
-            animation: bounce 2s infinite;
+            z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 15px;
+            color: var(--white); font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
         }
-        .scroll-line { width: 1px; height: 40px; background-color: var(--accent); }
-        @keyframes bounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 10px); } }
+        .scroll-line { width: 1px; height: 60px; background-color: var(--accent); overflow: hidden; position: relative; }
+        .scroll-line::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--white); animation: scrollDown 2s infinite ease-in-out;
+        }
+        @keyframes scrollDown { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
 
         /* ================= CÁC SECTION CHUNG ================= */
-        section { padding: 150px 4%; position: relative; max-width: 1920px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 90px; }
-        .section-title h2 { font-size: 3.5rem; line-height: 1.2; margin-top: 15px; }
-        .section-title span { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 6px; color: var(--accent); }
+        section { padding: 180px 4%; position: relative; max-width: 1920px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 100px; }
+        .section-title h2 { font-size: 4.2rem; line-height: 1.1; margin-top: 20px; }
+        .section-title span { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 8px; color: var(--accent); font-weight: 500; }
         .section-title h2 i { font-style: italic; color: var(--accent); font-weight: 300; }
 
         /* ================= ABOUT SECTION ================= */
-        .about-grid { display: grid; grid-template-columns: 5fr 6fr; gap: 80px; align-items: center; }
-        .about-img-wrapper { position: relative; padding-bottom: 30px; padding-right: 30px; }
-        .about-img-wrapper::after { content: ''; position: absolute; top: 30px; left: 30px; right: 0; bottom: 0; border: 1px solid var(--accent); z-index: -1; }
-        .about-img { height: 750px; background-size: cover; background-position: center; z-index: 1; }
-        .about-text p { font-size: 1.1rem; margin-bottom: 25px; color: #555; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .about-img-wrapper { position: relative; padding-bottom: 40px; padding-right: 40px; }
+        .about-img-wrapper::after { content: ''; position: absolute; top: 40px; left: 40px; right: 0; bottom: 0; border: 1px solid var(--accent); z-index: -1; }
+        .about-img { height: 800px; background-size: cover; background-position: center; z-index: 1; filter: contrast(1.05); }
+        
+        .about-text p { font-size: 1.15rem; margin-bottom: 30px; color: #444; line-height: 2; font-weight: 300; }
         .btn-luxury {
-            display: inline-block; padding: 15px 40px; margin-top: 20px;
+            display: inline-block; padding: 18px 50px; margin-top: 30px;
             border: 1px solid var(--primary); color: var(--primary);
-            font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase;
+            font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;
             transition: var(--transition-common); background: transparent; cursor: pointer;
+            position: relative; overflow: hidden; z-index: 1;
         }
-        .btn-luxury:hover { background: var(--primary); color: var(--secondary); }
+        .btn-luxury::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--primary); transition: var(--transition-common); z-index: -1;
+        }
+        .btn-luxury:hover::before { left: 0; }
+        .btn-luxury:hover { color: var(--secondary); border-color: var(--primary); }
 
-        /* ================= JOURNEY SECTION ================= */
-        .journey-section { background-color: var(--white); border-top: 1px solid #EAEAEA; }
-        .journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
-        .journey-text h3 { font-size: 2.8rem; margin-bottom: 30px; }
-        .journey-img-container { display: flex; gap: 30px; align-items: center; }
+        /* ================= JOURNEY SECTION (ĐẢO NGƯỢC THÀNH NỀN ĐEN CỰC SANG) ================= */
+        .journey-section { background-color: var(--primary); color: var(--secondary); }
+        .journey-section .section-title h2 { color: var(--secondary); }
+        .journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center; }
         
-        .journey-img-1, .journey-img-2 { position: relative; overflow: hidden; border-radius: 4px; }
-        .journey-img-1 { height: 650px; width: 55%; }
-        .journey-img-2 { height: 550px; width: 45%; margin-top: 80px; }
+        .journey-img-1, .journey-img-2 { position: relative; overflow: hidden; }
+        .journey-img-1 { height: 750px; width: 60%; margin-left: auto; } /* Ép ảnh so le nghệ thuật */
+        .journey-img-2 { height: 600px; width: 50%; margin-top: -150px; border: 10px solid var(--primary); z-index: 10;}
         
-        /* 📸 TỐI ƯU CHUYỂN CẢNH HÀNH TRÌNH SLIDE (Opacity mượt mà hơn) */
-        .journey-slide { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            object-fit: cover; 
-            opacity: 0; 
-            /* Chỉ tập trung vào Opacity và dùng thời gian 2s để mờ dần mượt */
-            transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1); 
-        }
+        .journey-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.5s cubic-bezier(0.22, 1, 0.36, 1); filter: brightness(0.9); }
         .journey-slide.active { opacity: 1; z-index: 2; }
 
-        /* ================= THỰC ĐƠN ================= */
-        .menu-section { background-color: var(--secondary); }
-        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .menu-card { background: var(--white); transition: var(--transition-common); border-radius: 4px; overflow: hidden; }
-        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        /* ================= THỰC ĐƠN (MINIMALIST) ================= */
+        .menu-section { background-color: var(--secondary); border-top: 1px solid var(--line-dark); }
+        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+        .menu-card { background: transparent; } /* Bỏ nền trắng */
         
-        .menu-img { height: 500px; width: 100%; overflow: hidden; position: relative; }
-        
-        /* 📸 TỐI ƯU CHUYỂN CẢNH THỰC ĐƠN SLIDE (Kết hợp Scale và Opacity mượt) */
-        .menu-slide { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            object-fit: cover; 
-            opacity: 0; 
-            /* Dùng thời gian 2s mờ dần, và thời gian transform ngắn hơn một chút cho hiệu ứng scale nhanh */
-            transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
-        }
+        .menu-img { height: 550px; width: 100%; overflow: hidden; position: relative; border-radius: 2px; }
+        .menu-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: var(--transition-menu); }
         .menu-slide.active { opacity: 1; z-index: 2; }
-        .menu-card:hover .menu-slide.active { transform: scale(1.05); }  /* Scale nhẹ khi hover */
+        .menu-card:hover .menu-slide.active { transform: scale(1.05); filter: brightness(0.85); } 
         
-        .menu-info { padding: 40px 30px; text-align: center; border: 1px solid #EAEAEA; border-top: none; }
-        .menu-info p { font-size: 0.95rem; color: #666; margin-bottom: 0; line-height: 1.6; }
+        .menu-info { padding: 30px 0; text-align: center; border-top: 1px solid var(--line); margin-top: 20px; transition: var(--transition-common); }
+        .menu-info p { font-size: 1rem; color: #555; margin-bottom: 0; line-height: 1.8; font-style: italic; font-family: 'Playfair Display', serif;}
+        .menu-card:hover .menu-info { border-top-color: var(--primary); }
 
-        /* ================= PARALLAX BANNER (Giữ Reveal mượt) ================= */
+        /* ================= PARALLAX BANNER ================= */
         .parallax-banner {
-            height: 70vh; max-width: 100%;
+            height: 80vh; max-width: 100%;
             background-attachment: fixed; background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white);
-            padding: 0 5%;
+            padding: 0 10%; position: relative;
         }
-        .parallax-banner h2 { font-size: 4rem; font-style: italic; max-width: 900px; line-height: 1.4; color: var(--white); }
+        .parallax-banner::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 14, 12, 0.65); /* Phủ đen mờ */
+        }
+        .parallax-banner h2 { position: relative; z-index: 2; font-size: 4.5rem; font-style: italic; max-width: 1100px; line-height: 1.3; color: var(--white); font-weight: 300;}
 
-        /* ================= BỘ SƯU TẬP ================= */
-        .gallery-section { background-color: var(--white); }
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-        .gallery-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; }
+        /* ================= BỘ SƯU TẬP (LIỀN MẠCH, KHÔNG KHOẢNG TRỐNG) ================= */
+        .gallery-section { background-color: var(--primary); padding: 0; max-width: 100%; } /* Tràn viền hoàn toàn */
+        .gallery-section .section-title { padding-top: 150px; margin-bottom: 80px; }
+        .gallery-section .section-title h2 { color: var(--secondary); }
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; } /* Gộp dính vào nhau */
+        .gallery-item { height: 650px; overflow: hidden; position: relative; cursor: pointer; }
         
-        /* 📸 TỐI ƯU CHUYỂN CẢNH BỘ SƯU TẬP SLIDE (Mờ dần mượt kết hợp Grayscale) */
         .gallery-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; 
-            opacity: 0; 
-            /* Tập trung vào Opacity và Transform mượt 2s */
-            transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1), transform 2s cubic-bezier(0.22, 1, 0.36, 1), filter 1s cubic-bezier(0.22, 1, 0.36, 1); 
-            filter: grayscale(20%); 
-            z-index: 1; 
-            transform: scale(1.015); /* Scale ban đầu rất nhẹ */
+            object-fit: cover; opacity: 0; transition: opacity 2s ease, transform 2.5s ease; 
+            filter: grayscale(40%) brightness(0.8); z-index: 1; transform: scale(1.02);
         }
         .gallery-slide.active { opacity: 1; z-index: 2; transform: scale(1); }
-        .gallery-item:hover .gallery-slide.active { transform: scale(1.04); filter: grayscale(0%); } /* Scale mượt khi hover */
+        .gallery-item:hover .gallery-slide.active { transform: scale(1.08); filter: grayscale(0%) brightness(1.1); z-index: 10; }
 
-        /* ================= FOOTER ================= */
-        footer { background: var(--primary); color: var(--secondary); padding: 120px 4% 40px; max-width: 1920px; margin: 0 auto; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 100px; }
-        .footer-logo img { height: 100px; width: 100px; object-fit: contain; margin-bottom: 30px; border-radius: 50%; background-color: var(--secondary); padding: 5px; }
-        .footer-desc { opacity: 0.7; max-width: 400px; font-size: 0.95rem; }
-        .info-item { margin-bottom: 20px; font-size: 0.9rem; opacity: 0.8; }
-        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase; }
+        /* ================= FOOTER CAO CẤP ================= */
+        footer { background: var(--primary); color: var(--secondary); padding: 150px 5% 50px; max-width: 100%; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1);}
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; margin-bottom: 120px; max-width: 1920px; margin-left: auto; margin-right: auto;}
+        .footer-logo img { height: 110px; width: 110px; object-fit: contain; margin-bottom: 35px; border-radius: 50%; background-color: var(--secondary); padding: 5px; }
+        .footer-desc { opacity: 0.6; max-width: 350px; font-size: 1rem; line-height: 2; font-weight: 200;}
+        .footer-grid h3 { font-family: 'Montserrat'; font-size: 0.75rem; letter-spacing: 4px; color: var(--accent); margin-bottom: 30px; font-weight: 500;}
+        .info-item { margin-bottom: 25px; font-size: 0.95rem; opacity: 0.7; font-weight: 200; line-height: 1.8;}
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 50px; font-size: 0.7rem; opacity: 0.4; letter-spacing: 3px; text-transform: uppercase; }
 
         /* ================= RESPONSIVE ================= */
         @media (max-width: 1024px) {
-            section { padding: 100px 5%; }
-            .about-grid, .journey-grid { grid-template-columns: 1fr; gap: 60px; }
+            section { padding: 120px 5%; }
+            .section-title h2 { font-size: 3.5rem; }
+            .about-grid, .journey-grid { grid-template-columns: 1fr; gap: 80px; }
             .about-img-wrapper::after { display: none; }
-            .about-img { height: 500px; }
-            .menu-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-img { height: 550px; }
+            .journey-img-1 { width: 100%; height: 500px; margin-left: 0; }
+            .journey-img-2 { width: 80%; height: 400px; margin-top: -80px; margin-left: 20%; border-width: 5px; }
             
-            .menu-img { height: 400px; }
-            .gallery-item { height: 450px; }
+            .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 40px;}
+            .menu-img { height: 450px; }
+            
+            .parallax-banner h2 { font-size: 3.2rem; }
+            .hero-content h1 { font-size: 8vw; }
+            
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item { height: 500px; }
 
-            .parallax-banner { background-attachment: scroll; }
-            .parallax-banner h2 { font-size: 3rem; }
-            .hero-content h1 { font-size: 4rem; }
-            
             .menu-toggle { display: block; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); }
             .nav-menu {
-                position: fixed; top: 0; left: -100%; width: 80%; max-width: 350px; height: 100vh;
-                background: rgba(248, 246, 240, 0.98); backdrop-filter: blur(20px);
-                flex-direction: column; justify-content: center; align-items: center;
-                gap: 50px; box-shadow: 10px 0 30px rgba(0,0,0,0.1);
-                transition: left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1001;
+                position: absolute; top: calc(100% + 10px); right: 5%; left: auto;
+                width: 200px; height: auto;
+                background: var(--secondary); 
+                flex-direction: column; justify-content: flex-start; align-items: center; 
+                padding: 30px 25px; gap: 30px; 
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                border-radius: 2px;
+                opacity: 0; visibility: hidden; transform: translateY(-10px);
+                transition: all 0.4s ease; z-index: 1001;
             }
-            .nav-menu.active { left: 0; }
-            .nav-menu a { color: var(--primary) !important; font-size: 1.2rem; }
+            .nav-menu.active { opacity: 1; visibility: visible; transform: translateY(0); }
+            .nav-menu a { color: var(--text) !important; font-size: 0.8rem; letter-spacing: 3px; text-align: center; }
 
             footer { padding: 100px 5% 40px; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 50px; margin-bottom: 60px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 60px; margin-bottom: 80px; }
             .footer-logo img { margin: 0 auto 30px auto; }
             .footer-desc { margin: 0 auto; }
         }
 
         @media (max-width: 600px) {
-            header { padding: 15px 5%; }
-            header.scrolled { padding: 10px 5%; }
-            .logo img { height: 70px; width: 70px; }
-            header.scrolled .logo img { height: 55px; width: 55px; }
+            header { padding: 20px 5%; }
+            header.scrolled { padding: 15px 5%; }
+            .logo img { height: 60px; width: 60px; }
+            header.scrolled .logo img { height: 50px; width: 50px; }
             
             section { padding: 80px 5%; }
-            .hero-content p.subtitle { font-size: 0.75rem; letter-spacing: 4px; }
-            .hero-content h1 { font-size: 2.8rem; margin-bottom: 20px; }
-            .section-title h2 { font-size: 2.2rem; }
-            .section-title { margin-bottom: 50px; }
+            .hero-content p.subtitle { font-size: 0.65rem; letter-spacing: 6px; }
+            .hero-content h1 { font-size: 3.2rem; margin-bottom: 20px; }
+            .section-title h2 { font-size: 2.6rem; }
+            .section-title { margin-bottom: 60px; }
             
             .about-img { height: 400px; }
-            .journey-img-container { flex-direction: column; gap: 10px; }
-            .journey-img-1, .journey-img-2 { width: 100%; height: 350px; margin-top: 0; }
+            .journey-img-1 { height: 350px; }
+            .journey-img-2 { width: 90%; height: 300px; margin-left: 10%; margin-top: -50px;}
             
-            .menu-grid { grid-template-columns: 1fr; gap: 30px; }
-            .menu-img { height: 350px; }
-            .gallery-item { height: 350px; }
+            .menu-grid { grid-template-columns: 1fr; gap: 60px; }
+            .menu-img { height: 450px; }
+            
+            .parallax-banner { height: 60vh; }
+            .parallax-banner h2 { font-size: 2.2rem; padding: 0 10px;}
+            
+            .gallery { grid-template-columns: 1fr; } 
+            .gallery-item { height: 400px; }
+            .gallery-section .section-title { padding-top: 80px; }
 
-            .parallax-banner { height: 50vh; }
-            .parallax-banner h2 { font-size: 2rem; }
-            
-            .gallery { grid-template-columns: 1fr; gap: 2px; } 
             footer { padding: 80px 5% 40px; }
+            .nav-menu { right: 5%; left: 5%; width: auto; padding: 25px; }
         }
     </style>
 </head>
@@ -381,7 +396,7 @@
                     </div>
                     <p>Tọa lạc tại Hẻm 437 Hùng Vương, Gia Nghĩa, Cẩm Cù House không chỉ là một quán cà phê. Đó là chốn về an yên, nơi bạn tìm lại bản thân giữa thanh âm róc rách của suối ngàn và hương vị cà phê mộc mạc.</p>
                     <p>Chúng tôi kiến tạo một không gian mở, nơi ranh giới giữa kiến trúc và thiên nhiên được xóa nhòa, mang đến bầu không khí trong lành tuyệt đối cho từng vị khách ghé thăm.</p>
-                    <a href="#contact" class="btn-luxury">Liên hệ </a>
+                    <a href="#contact" class="btn-luxury">Liên hệ đặt bàn</a>
                 </div>
             </div>
         </section>
@@ -393,8 +408,8 @@
                         <span>Di sản bản địa</span>
                         <h2>Hạt cà phê mang hơi thở <i>đại ngàn</i></h2>
                     </div>
-                    <p style="font-size: 1.1rem; color: #555; margin-bottom: 25px;">Mỗi giọt cà phê tại Cẩm Cù House là kết tinh từ những hạt nhân xanh tuyển chọn khắt khe nhất của vùng đất đỏ bazan Đăk Nông. Chúng tôi tôn trọng tính bản địa và theo đuổi triết lý phát triển bền vững từ nông trại đến tách cà phê.</p>
-                    <p style="font-size: 1.1rem; color: #555;">Quy trình rang xay thủ công cẩn trọng giúp đánh thức dải hương vị nguyên bản: đậm đà đặc trưng, đắng êm dịu và hậu vị ngọt sâu lắng kéo dài trong cuống họng.</p>
+                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.7); margin-bottom: 30px;">Mỗi giọt cà phê tại Cẩm Cù House là kết tinh từ những hạt nhân xanh tuyển chọn khắt khe nhất của vùng đất đỏ bazan Đăk Nông. Chúng tôi tôn trọng tính bản địa và theo đuổi triết lý phát triển bền vững từ nông trại đến tách cà phê.</p>
+                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.7);">Quy trình rang xay thủ công cẩn trọng giúp đánh thức dải hương vị nguyên bản: đậm đà đặc trưng, đắng êm dịu và hậu vị ngọt sâu lắng kéo dài trong cuống họng.</p>
                 </div>
                 <div class="journey-img-container reveal">
                     <div class="journey-img-1" id="journeySlider1">
@@ -472,7 +487,7 @@
             </div>
         </section>
 
-        <div class="parallax-banner reveal" style="background-image: linear-gradient(rgba(15, 23, 18, 0.7), rgba(15, 23, 18, 0.7)), url('bn.jpg');">
+        <div class="parallax-banner reveal" style="background-image: url('bn.jpg');">
             <h2>"Một ly cà phê ngon là chuyến du hành tuyệt vời của mọi giác quan."</h2>
         </div>
 
@@ -550,12 +565,12 @@
                 <p class="footer-desc">Kiến tạo không gian kết nối con người và thiên nhiên thông qua văn hóa thưởng thức cà phê xanh sạch tại vùng đất đỏ Đăk Nông.</p>
             </div>
             <div>
-                <h3 style="margin-bottom: 25px; font-family: 'Montserrat'; font-size: 0.9rem; letter-spacing: 3px; color: var(--accent);">THÔNG TIN LIÊN HỆ</h3>
+                <h3>THÔNG TIN LIÊN HỆ</h3>
                 <div class="info-item">Hẻm 437 Hùng Vương, Phường Nghĩa Trung, TP Gia Nghĩa, Đăk Nông</div>
                 <div class="info-item">Hotline: 0382 851 688<br>Phone: 0774 659 000</div>
             </div>
             <div>
-                <h3 style="margin-bottom: 25px; font-family: 'Montserrat'; font-size: 0.9rem; letter-spacing: 3px; color: var(--accent);">GIỜ MỞ CỬA</h3>
+                <h3>GIỜ MỞ CỬA</h3>
                 <div class="info-item">Thứ 2 - Thứ 5<br>07:00 - 18:00</div>
                 <div class="info-item">Thứ 6 - Chủ Nhật<br>07:00 - 22:00</div>
             </div>
@@ -566,21 +581,17 @@
     </footer>
 
     <script>
-        // Khởi động trượt cho Slider Đầu trang (Hero)
         function startHeroSlideshow() {
             const slides = document.querySelectorAll('#heroSlideshow .slide');
             let currentSlideIndex = 0;
             if(slides.length <= 1) return; 
-            
             setInterval(() => {
-                // 📸 TỐI ƯU JS TIMING: Giữ thời gian interval 6s để khớp với transition 2.5s
                 slides[currentSlideIndex].classList.remove('active');
                 currentSlideIndex = (currentSlideIndex + 1) % slides.length;
                 slides[currentSlideIndex].classList.add('active');
             }, 6000); 
         }
 
-        // Khởi động trượt tự động cho mọi thành phần chứa nhiều ảnh (Hành trình, Thực đơn)
         function startGenericSliders(containerSelector, slideClass, interval) {
             const containers = document.querySelectorAll(containerSelector);
             containers.forEach(container => {
@@ -588,7 +599,6 @@
                 let current = 0;
                 if(slides.length > 1) {
                     setInterval(() => {
-                        // 📸 TỐI ƯU JS TIMING: Giữ thời gian interval để mờ dần mượt 2s hoàn tất
                         slides[current].classList.remove('active');
                         current = (current + 1) % slides.length;
                         slides[current].classList.add('active');
@@ -597,27 +607,21 @@
             });
         }
 
-        // Khởi động trượt so le cho Bộ sưu tập (Gallery)
         function initDynamicGallery() {
             const galleryItems = document.querySelectorAll('#dynamicGallery .gallery-item');
-            
             galleryItems.forEach(item => {
                 const slides = item.querySelectorAll('.gallery-slide');
                 item.dataset.total = slides.length;
                 item.dataset.currentImg = 0;
             });
-
             let isOddTurn = true; 
             setInterval(() => {
                 galleryItems.forEach((item, idx) => {
                     const isGroupA = (idx % 2 === 0); 
                     const totalSlides = parseInt(item.dataset.total);
-                    
                     if (totalSlides > 1 && ((isOddTurn && isGroupA) || (!isOddTurn && !isGroupA))) {
                         const slides = item.querySelectorAll('.gallery-slide');
                         let curr = parseInt(item.dataset.currentImg);
-                        
-                        // 📸 TỐI ƯU JS TIMING: Giữ thời gian interval 5s khớp với transition mượt 2s
                         slides[curr].classList.remove('active'); 
                         curr = (curr + 1) % totalSlides; 
                         item.dataset.currentImg = curr;
@@ -628,23 +632,19 @@
             }, 5000);
         }
 
-        // KHỞI CHẠY TẤT CẢ KHI TRANG TẢI XONG
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
             startHeroSlideshow();
-            // 📸 TỐI ƯU TIMING JS: Đảm bảo thời gian interval dài hơn transition
-            startGenericSliders('.journey-img-1, .journey-img-2', '.journey-slide', 5000); // 5s interval cho 2s transition
-            startGenericSliders('.menu-img', '.menu-slide', 6000); // 6s interval cho 2s transition
+            startGenericSliders('.journey-img-1, .journey-img-2', '.journey-slide', 5000); 
+            startGenericSliders('.menu-img', '.menu-slide', 6000); 
             initDynamicGallery(); 
         });
 
-        // Xử lý Cuộn trang
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
             header.classList.toggle('scrolled', window.scrollY > 100);
         });
 
-        // Xử lý Menu Mobile
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -652,14 +652,8 @@
             navMenu.classList.toggle('active');
             if(navMenu.classList.contains('active')){
                 mobileMenuBtn.innerHTML = '✕';
-                mobileMenuBtn.style.color = 'var(--primary)'; 
             } else {
                 mobileMenuBtn.innerHTML = '☰';
-                if(window.scrollY > 100) {
-                     mobileMenuBtn.style.color = 'var(--primary)';
-                } else {
-                     mobileMenuBtn.style.color = 'var(--white)';
-                }
             }
         });
 
@@ -668,22 +662,16 @@
                 e.preventDefault();
                 navMenu.classList.remove('active');
                 mobileMenuBtn.innerHTML = '☰';
-                if(window.scrollY > 100) {
-                     mobileMenuBtn.style.color = 'var(--primary)';
-                } else {
-                     mobileMenuBtn.style.color = 'var(--white)';
-                }
                 document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Hiệu ứng Reveal
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
+                var elementVisible = 150; /* Kích hoạt hiệu ứng sớm hơn 1 chút */
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
