@@ -34,15 +34,11 @@
             overflow-x: hidden;
             font-weight: 400; 
             -webkit-font-smoothing: antialiased; 
+            position: relative; /* Thêm để quản lý lớp phủ nếu có */
         }
 
-        /* Hiệu ứng Film Grain mờ */
-        body::after {
-            content: "";
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.04; pointer-events: none; z-index: 9999;
-        }
+        /* 🧼 ĐÃ XOÁ HOÀN TOÀN HIỆU ỨNG FILM GRAIN (HẠT NHIỄU) */
+        /* Body::after trước đây chứa hiệu ứng nhiễu đã bị xóa bỏ */
 
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; color: var(--primary); }
         a { text-decoration: none; color: inherit; transition: var(--transition-common); }
@@ -164,7 +160,6 @@
         .journey-img-1 { height: 750px; width: 60%; margin-left: auto; } 
         .journey-img-2 { height: 600px; width: 50%; margin-top: -150px; border: 10px solid var(--primary); z-index: 10;}
         
-        /* Đã bỏ filter: brightness(0.9) làm tối ảnh */
         .journey-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.5s cubic-bezier(0.22, 1, 0.36, 1); }
         .journey-slide.active { opacity: 1; z-index: 2; }
 
@@ -202,7 +197,6 @@
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; } 
         .gallery-item { height: 650px; overflow: hidden; position: relative; cursor: pointer; }
         
-        /* ĐÃ BỎ HOÀN TOÀN FILTER LÀM TỐI VÀ XÁM ẢNH */
         .gallery-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; opacity: 0; transition: opacity 2s ease, transform 2.5s ease; 
@@ -399,7 +393,7 @@
                     </div>
                     <p>Tọa lạc tại Hẻm 437 Hùng Vương, Gia Nghĩa, Cẩm Cù House không chỉ là một quán cà phê. Đó là chốn về an yên, nơi bạn tìm lại bản thân giữa thanh âm róc rách của suối ngàn và hương vị cà phê mộc mạc.</p>
                     <p>Chúng tôi kiến tạo một không gian mở, nơi ranh giới giữa kiến trúc và thiên nhiên được xóa nhòa, mang đến bầu không khí trong lành tuyệt đối cho từng vị khách ghé thăm.</p>
-                    <a href="#contact" class="btn-luxury">Liên hệ </a>
+                    <a href="#contact" class="btn-luxury">Liên hệ đặt bàn</a>
                 </div>
             </div>
         </section>
