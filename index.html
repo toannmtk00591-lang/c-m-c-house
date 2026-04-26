@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cẩm Cù House | Tinh Hoa Cà Phê Sinh Thái</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
     
     <style>
         /* ================= MÀU SẮC & BIẾN CAO CẤP NHẤT ================= */
         :root {
-            --primary: #0a0e0c;    /* Đen rêu cực sâu (Sang hơn đen thui) */
-            --secondary: #F4F2EB;  /* Trắng ngà trầm (Giấy bồi tạp chí) */
-            --accent: #C5A059;     /* Vàng Gold tĩnh (Muted Gold) */
+            --primary: #0a0e0c;    
+            --secondary: #F4F2EB;  
+            --accent: #C5A059;     
             --text: #1a1a1a;       
             --text-light: #e0e0e0; 
             --white: #ffffff;
@@ -32,11 +32,11 @@
             color: var(--text);
             line-height: 1.8;
             overflow-x: hidden;
-            font-weight: 300;
-            -webkit-font-smoothing: antialiased; /* Làm nét chữ chuẩn Apple */
+            font-weight: 400; 
+            -webkit-font-smoothing: antialiased; 
         }
 
-        /* 📸 HIỆU ỨNG FILM GRAIN (Hạt nhiễu điện ảnh siêu cao cấp) */
+        /* Hiệu ứng Film Grain mờ */
         body::after {
             content: "";
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -44,11 +44,11 @@
             opacity: 0.04; pointer-events: none; z-index: 9999;
         }
 
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 400; color: var(--primary); }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; color: var(--primary); }
         a { text-decoration: none; color: inherit; transition: var(--transition-common); }
         ul { list-style: none; }
 
-        /* ================= HIỆU ỨNG REVEAL CHUẨN QUỐC TẾ ================= */
+        /* Hiệu ứng Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -56,7 +56,7 @@
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* ================= HEADER KÍNH MỜ MỎNG ================= */
+        /* ================= HEADER KÍNH MỜ ================= */
         header {
             position: fixed; top: 0; left: 0; width: 100%;
             padding: 35px 5%; display: flex; justify-content: space-between;
@@ -77,8 +77,8 @@
 
         .nav-menu { display: flex; gap: 60px; }
         .nav-menu a {
-            color: var(--white); font-size: 0.7rem;
-            text-transform: uppercase; letter-spacing: 4px; font-weight: 500; 
+            color: var(--white); font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 4px; font-weight: 600; 
             position: relative; padding-bottom: 5px;
         }
         header.scrolled .nav-menu a { color: var(--primary); }
@@ -96,7 +96,7 @@
         }
         header.scrolled .menu-toggle { color: var(--primary); }
 
-        /* ================= HERO SECTION (ĐẬM CHẤT ĐIỆN ẢNH) ================= */
+        /* ================= HERO SECTION ================= */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; color: var(--white); position: relative; overflow: hidden; z-index: 1;
@@ -106,19 +106,19 @@
         .slide { 
             background-size: cover; background-position: center; 
             opacity: 0; transition: var(--transition-smooth); 
-            z-index: 2; transform: scale(1.05); filter: contrast(1.1) brightness(0.95);
+            z-index: 2; transform: scale(1.05); filter: contrast(1.05);
         }
         .slide.active { opacity: 1; z-index: 3; transform: scale(1); }
         .hero-overlay { background: radial-gradient(circle, rgba(10, 14, 12, 0.3) 0%, rgba(10, 14, 12, 0.7) 100%); z-index: 5; }
         
         .hero-content { z-index: 10; position: relative; padding: 0 5%; width: 100%; }
-        .hero-content p.subtitle { font-size: 0.8rem; letter-spacing: 10px; text-transform: uppercase; color: var(--accent); margin-bottom: 25px; font-weight: 400; }
-        .hero-content h1 { font-size: 6.5vw; margin-bottom: 30px; color: var(--white); font-weight: 400; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hero-content p.subtitle { font-size: 0.85rem; letter-spacing: 10px; text-transform: uppercase; color: var(--accent); margin-bottom: 25px; font-weight: 500; }
+        .hero-content h1 { font-size: 6.5vw; margin-bottom: 30px; color: var(--white); font-weight: 500; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         
         .scroll-indicator {
             position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
             z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 15px;
-            color: var(--white); font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+            color: var(--white); font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 500;
         }
         .scroll-line { width: 1px; height: 60px; background-color: var(--accent); overflow: hidden; position: relative; }
         .scroll-line::after {
@@ -130,9 +130,9 @@
         /* ================= CÁC SECTION CHUNG ================= */
         section { padding: 180px 4%; position: relative; max-width: 1920px; margin: 0 auto; }
         .section-title { text-align: center; margin-bottom: 100px; }
-        .section-title h2 { font-size: 4.2rem; line-height: 1.1; margin-top: 20px; }
-        .section-title span { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 8px; color: var(--accent); font-weight: 500; }
-        .section-title h2 i { font-style: italic; color: var(--accent); font-weight: 300; }
+        .section-title h2 { font-size: 4.2rem; line-height: 1.1; margin-top: 20px; font-weight: 600;}
+        .section-title span { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 8px; color: var(--accent); font-weight: 600; }
+        .section-title h2 i { font-style: italic; color: var(--accent); font-weight: 500; }
 
         /* ================= ABOUT SECTION ================= */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
@@ -140,13 +140,13 @@
         .about-img-wrapper::after { content: ''; position: absolute; top: 40px; left: 40px; right: 0; bottom: 0; border: 1px solid var(--accent); z-index: -1; }
         .about-img { height: 800px; background-size: cover; background-position: center; z-index: 1; filter: contrast(1.05); }
         
-        .about-text p { font-size: 1.15rem; margin-bottom: 30px; color: #444; line-height: 2; font-weight: 300; }
+        .about-text p { font-size: 1.15rem; margin-bottom: 30px; color: #444; line-height: 2; font-weight: 400; } 
         .btn-luxury {
             display: inline-block; padding: 18px 50px; margin-top: 30px;
             border: 1px solid var(--primary); color: var(--primary);
             font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;
             transition: var(--transition-common); background: transparent; cursor: pointer;
-            position: relative; overflow: hidden; z-index: 1;
+            position: relative; overflow: hidden; z-index: 1; font-weight: 600; 
         }
         .btn-luxury::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
@@ -155,30 +155,31 @@
         .btn-luxury:hover::before { left: 0; }
         .btn-luxury:hover { color: var(--secondary); border-color: var(--primary); }
 
-        /* ================= JOURNEY SECTION (ĐẢO NGƯỢC THÀNH NỀN ĐEN CỰC SANG) ================= */
+        /* ================= JOURNEY SECTION ================= */
         .journey-section { background-color: var(--primary); color: var(--secondary); }
         .journey-section .section-title h2 { color: var(--secondary); }
         .journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center; }
         
         .journey-img-1, .journey-img-2 { position: relative; overflow: hidden; }
-        .journey-img-1 { height: 750px; width: 60%; margin-left: auto; } /* Ép ảnh so le nghệ thuật */
+        .journey-img-1 { height: 750px; width: 60%; margin-left: auto; } 
         .journey-img-2 { height: 600px; width: 50%; margin-top: -150px; border: 10px solid var(--primary); z-index: 10;}
         
-        .journey-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.5s cubic-bezier(0.22, 1, 0.36, 1); filter: brightness(0.9); }
+        /* Đã bỏ filter: brightness(0.9) làm tối ảnh */
+        .journey-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.5s cubic-bezier(0.22, 1, 0.36, 1); }
         .journey-slide.active { opacity: 1; z-index: 2; }
 
-        /* ================= THỰC ĐƠN (MINIMALIST) ================= */
+        /* ================= THỰC ĐƠN ================= */
         .menu-section { background-color: var(--secondary); border-top: 1px solid var(--line-dark); }
         .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
-        .menu-card { background: transparent; } /* Bỏ nền trắng */
+        .menu-card { background: transparent; } 
         
         .menu-img { height: 550px; width: 100%; overflow: hidden; position: relative; border-radius: 2px; }
         .menu-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: var(--transition-menu); }
         .menu-slide.active { opacity: 1; z-index: 2; }
-        .menu-card:hover .menu-slide.active { transform: scale(1.05); filter: brightness(0.85); } 
+        .menu-card:hover .menu-slide.active { transform: scale(1.05); } 
         
         .menu-info { padding: 30px 0; text-align: center; border-top: 1px solid var(--line); margin-top: 20px; transition: var(--transition-common); }
-        .menu-info p { font-size: 1rem; color: #555; margin-bottom: 0; line-height: 1.8; font-style: italic; font-family: 'Playfair Display', serif;}
+        .menu-info p { font-size: 1.05rem; color: #444; margin-bottom: 0; line-height: 1.8; font-style: italic; font-family: 'Playfair Display', serif; font-weight: 500;}
         .menu-card:hover .menu-info { border-top-color: var(--primary); }
 
         /* ================= PARALLAX BANNER ================= */
@@ -190,33 +191,35 @@
         }
         .parallax-banner::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 14, 12, 0.65); /* Phủ đen mờ */
+            background: rgba(10, 14, 12, 0.65); 
         }
-        .parallax-banner h2 { position: relative; z-index: 2; font-size: 4.5rem; font-style: italic; max-width: 1100px; line-height: 1.3; color: var(--white); font-weight: 300;}
+        .parallax-banner h2 { position: relative; z-index: 2; font-size: 4.5rem; font-style: italic; max-width: 1100px; line-height: 1.3; color: var(--white); font-weight: 500;}
 
-        /* ================= BỘ SƯU TẬP (LIỀN MẠCH, KHÔNG KHOẢNG TRỐNG) ================= */
-        .gallery-section { background-color: var(--primary); padding: 0; max-width: 100%; } /* Tràn viền hoàn toàn */
+        /* ================= BỘ SƯU TẬP ================= */
+        .gallery-section { background-color: var(--primary); padding: 0; max-width: 100%; } 
         .gallery-section .section-title { padding-top: 150px; margin-bottom: 80px; }
         .gallery-section .section-title h2 { color: var(--secondary); }
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; } /* Gộp dính vào nhau */
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; } 
         .gallery-item { height: 650px; overflow: hidden; position: relative; cursor: pointer; }
         
+        /* ĐÃ BỎ HOÀN TOÀN FILTER LÀM TỐI VÀ XÁM ẢNH */
         .gallery-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; opacity: 0; transition: opacity 2s ease, transform 2.5s ease; 
-            filter: grayscale(40%) brightness(0.8); z-index: 1; transform: scale(1.02);
+            z-index: 1; transform: scale(1.02);
         }
         .gallery-slide.active { opacity: 1; z-index: 2; transform: scale(1); }
-        .gallery-item:hover .gallery-slide.active { transform: scale(1.08); filter: grayscale(0%) brightness(1.1); z-index: 10; }
+        .gallery-item:hover .gallery-slide.active { transform: scale(1.08); z-index: 10; }
 
         /* ================= FOOTER CAO CẤP ================= */
         footer { background: var(--primary); color: var(--secondary); padding: 150px 5% 50px; max-width: 100%; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1);}
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; margin-bottom: 120px; max-width: 1920px; margin-left: auto; margin-right: auto;}
         .footer-logo img { height: 110px; width: 110px; object-fit: contain; margin-bottom: 35px; border-radius: 50%; background-color: var(--secondary); padding: 5px; }
-        .footer-desc { opacity: 0.6; max-width: 350px; font-size: 1rem; line-height: 2; font-weight: 200;}
-        .footer-grid h3 { font-family: 'Montserrat'; font-size: 0.75rem; letter-spacing: 4px; color: var(--accent); margin-bottom: 30px; font-weight: 500;}
-        .info-item { margin-bottom: 25px; font-size: 0.95rem; opacity: 0.7; font-weight: 200; line-height: 1.8;}
-        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 50px; font-size: 0.7rem; opacity: 0.4; letter-spacing: 3px; text-transform: uppercase; }
+        
+        .footer-desc { opacity: 0.8; max-width: 350px; font-size: 1rem; line-height: 2; font-weight: 400;}
+        .footer-grid h3 { font-family: 'Montserrat'; font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); margin-bottom: 30px; font-weight: 600;}
+        .info-item { margin-bottom: 25px; font-size: 0.95rem; opacity: 0.8; font-weight: 400; line-height: 1.8;}
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 50px; font-size: 0.75rem; opacity: 0.6; letter-spacing: 3px; text-transform: uppercase; font-weight: 500;}
 
         /* ================= RESPONSIVE ================= */
         @media (max-width: 1024px) {
@@ -396,7 +399,7 @@
                     </div>
                     <p>Tọa lạc tại Hẻm 437 Hùng Vương, Gia Nghĩa, Cẩm Cù House không chỉ là một quán cà phê. Đó là chốn về an yên, nơi bạn tìm lại bản thân giữa thanh âm róc rách của suối ngàn và hương vị cà phê mộc mạc.</p>
                     <p>Chúng tôi kiến tạo một không gian mở, nơi ranh giới giữa kiến trúc và thiên nhiên được xóa nhòa, mang đến bầu không khí trong lành tuyệt đối cho từng vị khách ghé thăm.</p>
-                    <a href="#contact" class="btn-luxury">Liên hệ đặt bàn</a>
+                    <a href="#contact" class="btn-luxury">Liên hệ </a>
                 </div>
             </div>
         </section>
@@ -408,8 +411,8 @@
                         <span>Di sản bản địa</span>
                         <h2>Hạt cà phê mang hơi thở <i>đại ngàn</i></h2>
                     </div>
-                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.7); margin-bottom: 30px;">Mỗi giọt cà phê tại Cẩm Cù House là kết tinh từ những hạt nhân xanh tuyển chọn khắt khe nhất của vùng đất đỏ bazan Đăk Nông. Chúng tôi tôn trọng tính bản địa và theo đuổi triết lý phát triển bền vững từ nông trại đến tách cà phê.</p>
-                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.7);">Quy trình rang xay thủ công cẩn trọng giúp đánh thức dải hương vị nguyên bản: đậm đà đặc trưng, đắng êm dịu và hậu vị ngọt sâu lắng kéo dài trong cuống họng.</p>
+                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.9); margin-bottom: 30px;">Mỗi giọt cà phê tại Cẩm Cù House là kết tinh từ những hạt nhân xanh tuyển chọn khắt khe nhất của vùng đất đỏ bazan Đăk Nông. Chúng tôi tôn trọng tính bản địa và theo đuổi triết lý phát triển bền vững từ nông trại đến tách cà phê.</p>
+                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.9);">Quy trình rang xay thủ công cẩn trọng giúp đánh thức dải hương vị nguyên bản: đậm đà đặc trưng, đắng êm dịu và hậu vị ngọt sâu lắng kéo dài trong cuống họng.</p>
                 </div>
                 <div class="journey-img-container reveal">
                     <div class="journey-img-1" id="journeySlider1">
@@ -671,7 +674,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150; /* Kích hoạt hiệu ứng sớm hơn 1 chút */
+                var elementVisible = 150; 
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
