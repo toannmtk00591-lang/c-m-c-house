@@ -62,6 +62,7 @@
         }
         #preloader p { font-family: 'Playfair Display', serif; color: var(--primary); font-style: italic; letter-spacing: 2px;}
         @keyframes spin { 100% { transform: rotate(360deg); } }
+        /* Tắt Preloader không chặn thao tác nữa */
         body.loaded #preloader { opacity: 0; visibility: hidden; pointer-events: none; }
 
         /* Hiệu ứng Reveal */
@@ -355,10 +356,10 @@
                 <div class="about-text reveal">
                     <div class="section-title" style="text-align: left; margin-bottom: 40px;">
                         <span>Triết lý Cẩm Cù</span>
-                        <h2>Trải nghiệm sinh thái <i>thuần khiết</i></h2>
+                        <h2>Chạm vào sinh thái <i>tinh khiết</i></h2>
                     </div>
-                    <p>Tọa lạc tại Hẻm 437 Hùng Vương, Gia Nghĩa, Cẩm Cù House không chỉ là một quán cà phê. Đó là chốn về an yên, nơi bạn tìm lại bản thân giữa thanh âm róc rách của suối ngàn và hương vị cà phê mộc mạc.</p>
-                    <p>Chúng tôi kiến tạo một không gian mở, nơi ranh giới giữa kiến trúc và thiên nhiên được xóa nhòa, mang đến bầu không khí trong lành tuyệt đối cho từng vị khách ghé thăm.</p>
+                    <p>Giấu mình tại hẻm 437 Hùng Vương, giữa Gia Nghĩa, Cẩm Cù House vượt lên trên định danh của một không gian thưởng thức cà phê thông thường. Nơi đây là nơi trú ẩn tĩnh lặng, để bạn đắm say miết đi tìm lại chính mình giữa âm ba róc rách của suối ngàn và hương vị cà phê mộc mạc, nguyên bản.</p>
+                    <p>Bằng thiết kế không gian mở, chúng tôi dụng tâm xóa bỏ mọi ranh giới giữa kiến trúc nhân tạo và thiên nhiên hoang sơ. Để rồi, mỗi bước chân du khách ghé thăm đều được ôm trọn bởi bầu không khí trong trẻo và sự an yên tuyệt đối của đại ngàn.</p>
                     <a href="#contact" class="btn-luxury">Liên Hệ</a>
                 </div>
             </div>
@@ -371,8 +372,8 @@
                         <span>Di sản bản địa</span>
                         <h2>Hạt cà phê mang hơi thở <i>đại ngàn</i></h2>
                     </div>
-                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.9); margin-bottom: 30px;">Mỗi giọt cà phê tại Cẩm Cù House là kết tinh từ những hạt nhân xanh tuyển chọn khắt khe nhất của vùng đất đỏ bazan Đăk Nông. Chúng tôi tôn trọng tính bản địa và theo đuổi triết lý phát triển bền vững từ nông trại đến tách cà phê.</p>
-                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.9);">Quy trình rang xay thủ công cẩn trọng giúp đánh thức dải hương vị nguyên bản: đậm đà đặc trưng, đắng êm dịu và hậu vị ngọt sâu lắng kéo dài trong cuống họng.</p>
+                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.9); margin-bottom: 30px;">Có một đại ngàn thu nhỏ trong mỗi ly cà phê tại Cẩm Cù House. Đó là kết tinh từ những hạt nhân xanh mướt được nuôi dưỡng ở nông trại gia đình, dồi dào nắng gió của vùng đất đỏ bazan Đắk Nông. Thay vì tìm kiếm đâu xa, chúng tôi chọn trân trọng sản vật quê hương, tự tay vun trồng.</p>
+                    <p style="font-size: 1.15rem; color: rgba(244, 242, 235, 0.9);">Bằng sự nâng niu trong từng mẻ rang xay thủ công, chúng tôi lưu giữ trọn vẹn linh hồn của hạt cà phê. Để khi chạm vào bờ môi, bạn sẽ cảm nhận được ngay dải hương vị nguyên bản: đậm đà nhiệt thành của rừng núi, chút đắng êm dịu nơi vị giác, và đọng lại sau cùng là hậu vị ngọt ngào, sâu lắng kéo dài miên man.</p>
                 </div>
                 <div class="journey-img-container reveal">
                     <div class="journey-img-1" id="journeySlider1">
@@ -391,6 +392,7 @@
                         <img src="t11.jpg" alt="Câu chuyện Cẩm Cù 11" loading="lazy" class="journey-slide">
                         <img src="t12.jpg" alt="Câu chuyện Cẩm Cù 12" loading="lazy" class="journey-slide">
                         <img src="t13.jpg" alt="Câu chuyện Cẩm Cù 13" loading="lazy" class="journey-slide">
+                        <img src="t14.jpg" alt="Câu chuyện Cẩm Cù 14" loading="lazy" class="journey-slide">
                     </div>
                 </div>
             </div>
@@ -519,7 +521,7 @@
         </section>
 
         <section class="map-section">
-            <iframe class="map-container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11125.794697669395!2d107.698424!3d11.996144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3173e3ccbdcc55df%3A0x932e986e061ca415!2zQ8OibSBDw7kgSG91c2U!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe class="map-container" src="https://www.google.com/maps?q=Cẩm+Cù+House,+Hẻm+437+Hùng+Vương,+Phường+Nghĩa+Trung,+Gia+Nghĩa,+Đăk+Nông&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
 
     </main>
